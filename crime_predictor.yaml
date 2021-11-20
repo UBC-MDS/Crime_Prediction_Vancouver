@@ -3,6 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - python=3.9.*
   - ipykernel
   - ipython>=7.15
   - docopt>=0.6.2
