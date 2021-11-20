@@ -1,0 +1,20 @@
+name: 'crime_predictor'
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - ipykernel
+  - ipython>=7.15
+  - docopt
+  - vega_datasets
+  - altair_saver
+  - matplotlib>=3.2.2
+  - requests>=2.24.0
+  - scikit-learn>=1.0
+  - pandas>=1.3.*
+  - graphviz
+  - python-graphviz
+  - pip
+  - pip:
+    - rpy2
+    - kaggle
