@@ -7,11 +7,7 @@ Kaggle requires authentications before downloading the file. Refer to the README
 
 ### Setting Up Your Environment
 
-Install the latest version of DSCI_522_Crime_Prediction_Vancouver locally using 
-```
-$ pip install https://github.com/UBC-MDS/DSCI_522_Crime_Prediction_Vancouver
-```
-Next step is to fork the repository on GitHub and clone the fork to you local
+Fork the repository on GitHub and clone the fork to you local
 machine. For more details on forking see the [GitHub
 Documentation](https://help.github.com/en/articles/fork-a-repo).
 ```
