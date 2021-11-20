@@ -5,7 +5,7 @@ channels:
 dependencies:
   - ipykernel
   - ipython>=7.15
-  - docopt
+  - docopt>=0.6.2
   - vega_datasets
   - altair_saver
   - matplotlib>=3.2.2
