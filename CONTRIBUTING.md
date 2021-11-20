@@ -51,8 +51,5 @@ in the PR discussion if anything needs to be changed. To make changes continue
 to push commits made in your local example branch to origin and they will be
 automatically shown in the PR. 
 
-Hopefully your PR will be answered in a timely manner and your contribution will
-help others in the future.
-
 ### Code of Conduct
 Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
