@@ -66,7 +66,7 @@ In case of replicating the analysis without using `conda`, the following are the
   - rpy2
   - kaggle
 
-- R version and R packages:
+- R version 4.1.1 and R packages:
   - knitr
   - tidyverse
   - ggthemes
