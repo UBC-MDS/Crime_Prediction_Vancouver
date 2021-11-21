@@ -1,4 +1,4 @@
-# Crime prediction in Vancouver
+# Crime Prediction in Vancouver
 
 - contributors: Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang
 
