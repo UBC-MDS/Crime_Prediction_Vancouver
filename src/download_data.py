@@ -2,12 +2,12 @@
 # date: 2021-11-19
 
 '''This script downloads data from 'wosaku/crime-in-vacouver' Kaggle.com using
-its API and saves its to a data file path.
-from a csv file. This script takes an unquoted file path.
+its API and saves its to a data file path. This script takes an quoted file path.
 
-Usage: download_data.py --file_path=<file_path>
+Usage: download_data.py --kaggle_path=<kaggle_path> --file_path=<file_path>
 
 Options:
+--kaggle_path=<kaggle_path>   Path of the kaggle data set
 --file_path=<file_path>   Path to the data file
 '''
 import os
@@ -27,20 +27,19 @@ except OSError:
     print("then, move the downloaded .json file to your ~/.kaggle directory in your computer")
 
 
-def main(file_path):
+def main(kaggle_path, file_path):
     
     
-    # if the files is not in the directory create one and dowload it
-    if not os.path.exists(os.path.join(file_path, 'data\crime.csv')):
-
+    # if the files is not in the directory create one
+    if not os.path.exists(os.path.dirname(file_path)):
         # create a data directory
-
-        os.makedirs(os.path.join(file_path,'data'))
-
-        # download the data in that directory
-        kaggle.api.dataset_download_files('wosaku/crime-in-vancouver',
-                                          path=os.path.join(file_path,'data'),
-                                          unzip=True)
-
+        os.makedirs(os.path.dirname(file_path))
+        
+    # download the data in that directory
+    kaggle.api.dataset_download_files(kaggle_path,
+                                      path=file_path,
+                                      unzip=True)
+    
+    
 if __name__ == "__main__":
-    main(opt['--file_path'])
+    main(opt['--kaggle_path'], opt['--file_path']
