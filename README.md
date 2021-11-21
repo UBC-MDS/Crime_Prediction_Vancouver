@@ -1,6 +1,6 @@
 # Crime Prediction in Vancouver
 
-- contributors: Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang
+- contributors: Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang
 
 This is the data analysis project of group 24 (Cohort 6, 2022) for DSCI 522 (Data Science workflows); a course in the Master of Data Science program at the University of British Columbia.
 
@@ -68,7 +68,7 @@ In case of replicating the analysis without using `conda`, the following are the
   - tidyverse
   - ggthemes
 
- ### Mac M1 specific considerations:
+### Mac M1 specific considerations
 
   Due to the default installation version or R and RStudio is at arm64, it does not compatible with python rpy when executing R scripts together with Python in Jupyter notebook. To resolve, refer to the steps in this [issue](https://github.com/UBC-MDS/DSCI_522_Crime_Prediction_Vancouver/issues/12).
 
@@ -78,6 +78,4 @@ Refer to [here](data/raw/legal_disclaimer.txt) for the legal disclaimer of using
 
 ## References
 
-### Data set
-
-Vancouver Police Department Open Data https://geodash.vpd.ca/opendata/
+Vancouver Police Department Open Data <https://geodash.vpd.ca/opendata/>
