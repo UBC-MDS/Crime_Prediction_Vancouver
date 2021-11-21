@@ -13,6 +13,13 @@ Collaborators and project maintainers have the responsibility to remove, edit, o
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team. The project team will review the complaints, and will respond in a way that it deems appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
 
+### Project Team
+
+- Jasmine Ortega jasmineortega29@gmail.com
+- Thomas Siu     thomas.siu@gmail.com
+- Shi Yan Wang   sy25wang@gmail.com
+- Ramiro Mejia   ramiromejiap@gmail.com
+
 ### Attribution
 
 This Code of Conduct is adapted from the tidyverse , available at [tidyverse](https://github.com/tidyverse/tidyverse.org/blob/master/CODE_OF_CONDUCT.md)
