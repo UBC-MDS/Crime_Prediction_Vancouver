@@ -1,6 +1,9 @@
 ---
 title: "Exploratory data analysis of Crime in Vancouver"
-output: github_document
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -14,24 +17,17 @@ theme_set(theme_minimal())
 set.seed(2020)
 ```
 
-# Summary of the data set
-
-```{r load data}
+```{r, results='hide'}
 crime_data <- read.csv("../data/crime.csv")
 crime_data |> 
   drop_na() |> 
   select(-X, -Y, -Latitude, -Longitude)
 ```
 
-The data set used in this project comes from the Vancouver Open Data Catalogue. It includes 529.652 crimes reported between January 1, 2003 to July 13, 2017. The data set is also avialable on <https://www.kaggle.com/wosaku/crime-in-vancouver>
+The data set used in this project comes from **the Vancouver Open Data Catalogue**. It includes 529.652 crimes reported between January 1, 2003 to July 13, 2017. The data set is also avialable on <https://www.kaggle.com/wosaku/crime-in-vancouver>
 
-```{r}
-# Type of crimes
-# summary(crime_data)
 
-```
-
-Below you will find the table summarize the count of each reported crime type
+Below table summarize the total number of each reported crime type
 
 ```{r}
 # Count type of crimes
@@ -44,12 +40,13 @@ type_crime <- crime_data |>
 type_crime
 ```
 
+\newpage
 Top three reported crime type are Theft from Vehicle, Mischief and Break and Enter Residential/Other.
 
 ```{r}
 ggplot(type_crime, aes(x = "", y = Count, fill = TYPE)) +
   geom_col() +
-  geom_text(aes(label = ifelse(type_crime$Count > 50000, Percentage, "")),
+  geom_text(aes(label = ifelse(Count > 50000, Percentage, "")),
             position = position_stack(vjust = 0.5),
             show.legend = FALSE,
             size = 3) +
@@ -59,17 +56,16 @@ ggplot(type_crime, aes(x = "", y = Count, fill = TYPE)) +
   
 ```
 
-We would also explore the density of reported crime for each neighbourhoods
+The project would also explore the density of reported crime for each neighbourhoods
 
 ```{r}
 # Count Neighbourhood with most crimes
 neighbour_crime <- crime_data |> 
   group_by(NEIGHBOURHOOD) |> 
   summarize(Count = n()) |> 
-  arrange(desc(Count)) |> 
+  arrange(desc(Count))
 
 neighbour_crime[-c(2),] # Remove crime without Neighbourhood data
-
 
 ```
 
