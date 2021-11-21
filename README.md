@@ -71,6 +71,10 @@ In case of replicating the analysis without using `conda`, the following are the
   - tidyverse
   - ggthemes
 
+ ### Mac M1 specific considerations:
+
+  Due to the default installation version or R and RStudio is at arm64, it does not compatible with python rpy when executing R scripts together with Python in Jupyter notebook. To resolve, refer to the steps in this [issue](https://github.com/UBC-MDS/DSCI_522_Crime_Prediction_Vancouver/issues/12).
+
 ## License
 
 The data set used in this project `Crime in Vancouver` is made available under the Open Database License: <http://opendatacommons.org/licenses/odbl/1.0/>. Any rights in individual contents of the database are licensed under the Database Contents License: <http://opendatacommons.org/licenses/dbcl/1.0/>
