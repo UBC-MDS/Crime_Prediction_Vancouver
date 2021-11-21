@@ -8,7 +8,7 @@ This is the data analysis project of group 24 (Cohort 6, 2022) for DSCI 522 (Dat
 
 One of the famous science fictions *The Minority Report* plots the future world, where police utilize technology to predict and arrest criminals before the crime happens. Put aside the ethical debates of the arrestment, we believe it is still essential to identify and predict crimes with good purpose. For example, can we predict the kinds of crime would possibly happen, given a certain neighbourhood and time? Police would then be able to strengthen specific skillsets to cater such law-breaching activities. Also, local government officials could utilize the prediction to adjust related policies.
 
-We are going to build a classification prediction model to predict the types of crimes that happens in Vancouver, based on the location and the time of the day. The data set that is used in the project is originated from the Vancouver Open Data Catalogue, which was extracted and modified by Wilian Osaku in July 2017. It is sourced from Kaggle and can be found [here](https://www.kaggle.com/wosaku/crime-in-vancouver). The data set represents the types of crime reported in different areas of Vancouver at a particular time from 2003 to 2017.
+We are going to build a classification prediction model to predict the types of crimes that happens in Vancouver, based on the location and the time of the day. The data set that is used in the project is originated from The Vancouver Police Department (VPD), with the data set called `GEODASH OPEN DATA`. The data can be found [here](https://geodash.vpd.ca/opendata/). The data set represents the types of crime reported in different areas of Vancouver at a particular time from 2003 to 2021. Since the data is being updated by the VPD every week, we will cut-off the data up to 2021 October to ensure our analysis and model are reproducible.
 
 To construct a meaningful prediction model, we will address the association between various crime types and areas in Vancouver. We will also study the trends of the number of crimes committed over the years in order to adjust the model with better prediction capability.
 
@@ -35,16 +35,13 @@ conda activate crime_predictor
 
 Download the latest version of R at `https://cran.r-project.org`. Follow the installer instructions.
 
-### Kaggle API
+### Data set
 
-In order to download the dataset from Kaggle, generate an API token by the following steps:
+Download the `Crime Vancouver` data set by running the following command in `terminal`:
 
-1. Sign up or login Kaggle at `https://www.kaggle.com`
-2. Go to the `Account` tab of your user profile
-3. Select `Create New API Token` under `API session`. This will trigger the download of kaggle.json.
-4. Place the file in the necessary location, for example:
-    - Mac: `~/.kaggle/kaggle.json`
-    - Windows: `C:\Users\<Windows-username>\.kaggle\kaggle.json`
+```bash
+python src/download_data.py --url="https://geodash.vpd.ca/opendata/crimedata_download/crimedata_csv_all_years.zip?disclaimer=on" --file_path="data/raw" --zip_file_name="crimedata_csv_all_years.csv"
+```
 
 ## Dependencies
 
@@ -75,12 +72,12 @@ In case of replicating the analysis without using `conda`, the following are the
 
   Due to the default installation version or R and RStudio is at arm64, it does not compatible with python rpy when executing R scripts together with Python in Jupyter notebook. To resolve, refer to the steps in this [issue](https://github.com/UBC-MDS/DSCI_522_Crime_Prediction_Vancouver/issues/12).
 
-## License
+## Legal Disclaimer (Data set)
 
-The data set used in this project `Crime in Vancouver` is made available under the Open Database License: <http://opendatacommons.org/licenses/odbl/1.0/>. Any rights in individual contents of the database are licensed under the Database Contents License: <http://opendatacommons.org/licenses/dbcl/1.0/>
+Refer to [here](data/raw/legal_disclaimer.txt) for the legal disclaimer of using the data set.
 
 ## References
 
 ### Data set
 
-Wilian Osaku. 2017 "Crime in Vancouver" <https://www.kaggle.com/wosaku/crime-in-vancouver>
+Vancouver Police Department Open Data https://geodash.vpd.ca/opendata/
