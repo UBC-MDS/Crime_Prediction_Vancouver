@@ -1,45 +1,45 @@
 # author: Group 24
 # date: 2021-11-19
 
-'''This script downloads data from 'wosaku/crime-in-vacouver' Kaggle.com using
-its API and saves its to a data file path. This script takes an quoted file path.
+'''This script downloads data from the given url to a local path and perform unzip if needed.
 
-Usage: download_data.py --kaggle_path=<kaggle_path> --file_path=<file_path>
+Usage: download_data.py --url=<url> --file_path=<file_path> [--zip_file_name=<zip_file_name>]
 
 Options:
---kaggle_path=<kaggle_path>   Path of the kaggle data set
---file_path=<file_path>   Path to the data file
+--url=<url>   Path of the data set to be downloaded
+--file_path=<file_path>   Path(includes filename if not zip) to the data file store in local
+--zip_file_name=<zip_file_name> File name in case the source is a zip file (Optional option)
 '''
+from urllib.request import urlopen
+from zipfile import ZipFile
+from io import BytesIO
 import os
 import pandas as pd
 from docopt import docopt
 
 opt = docopt(__doc__)
 
+def download_and_unzip(url, file_path, zip_file_name):
+    try:
+        response = urlopen(url)
+        zipfile = ZipFile(BytesIO(response.read()))
+        zipfile.extract(member=zip_file_name, path=file_path)
+    except Exception as error:
+        print(f"Error message: %s" %error)        
+        print("Please check if the url points to a zip file!")
+    return
 
-try:
-    import kaggle
-except ModuleNotFoundError:
-    print('ERROR : Please install the kaggle module using : pip install kaggle')
-except OSError:
-    print ("ERROR :You must authenticate using an API token please follow the instructions")
-    print("First, create a kaggle account. Go to account setting and create a 'New API Token'")
-    print("then, move the downloaded .json file to your ~/.kaggle directory in your computer")
+def main(url, file_path, zip_file_name=None):
+    
+    if zip_file_name is not None:
+        download_and_unzip(url, file_path, zip_file_name)
+    else:
+        data = pd.read_csv(url, header=None)
+        try:
+          data.to_csv(file_path, index=False)
+        except:
+            os.makedirs(os.path.dirname(file_path))
+            data.to_csv(file_path, index=False)
 
-
-def main(kaggle_path, file_path):
-    
-    
-    # if the files is not in the directory create one
-    if not os.path.exists(os.path.dirname(file_path)):
-        # create a data directory
-        os.makedirs(os.path.dirname(file_path))
-        
-    # download the data in that directory
-    kaggle.api.dataset_download_files(kaggle_path,
-                                      path=file_path,
-                                      unzip=True)
-    
-    
 if __name__ == "__main__":
-    main(opt['--kaggle_path'], opt['--file_path']
+    main(opt['--url'], opt['--file_path'], opt['--zip_file_name'])
