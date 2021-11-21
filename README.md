@@ -14,7 +14,7 @@ To construct a meaningful prediction model, we will address the association betw
 
 ## EDA and Analysis
 
-Before we begin the analysis, we split the data into train data(80%) and test data(20%). We performed an initial EDA against the train data. In particular, we summarised the number of crimes committed by locations throughout the years in a table. We also identified the correlation chart of the data features with the crime types. Detailed EDA report that includes other EDA results can be found [here](src/eda.md).
+Before we begin the analysis, we split the data into train data(80%) and test data(20%). We performed an initial EDA against the train data. In particular, we summarised the number of crimes committed by locations throughout the years in a table. We also identified the correlation chart of the data features with the crime types. Detailed EDA report that includes other EDA results can be found [here](src/Crime_in_Vancouver_eda.ipynb).
 
 After EDA, we will adopt the methodology in supervised machine learning for the prediction. Necessary data transformation will be applied based on the reults of initial data analysis. During EDA, we will revisit the scoring method to be used, as well as to decide if we are more concerned on False Positive error or False Negative error, which will determine on our identication of the suitable model. Then we will examine different machine learning models through techniques of cross validation. Models to be assessed will be Dummy Classifier, Decision Tree, K-nearest neighbours, and Logistic Regression. The process will be repeated with different hyperparameters so that we are able to gather enough statistics to identify the best performing model.
 
