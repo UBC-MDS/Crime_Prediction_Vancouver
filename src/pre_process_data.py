@@ -26,17 +26,6 @@ from sklearn.preprocessing import (
 
 opt = docopt(__doc__)
 
-def download_and_unzip(url, file_path, zip_file_name):
-    try:
-        response = urlopen(url)
-        zipfile = ZipFile(BytesIO(response.read()))
-        zipfile.extract(member=zip_file_name, path=file_path)
-        print(f"The file is unzipped successfully at %s/%s" % (file_path, zip_file_name))
-    except Exception as error:
-        print(f"Error message: %s" %error)
-        print("Please check if the url points to a zip file!")
-    return
-
 def main(input_path, out_path):
 
     # Read data from csv and filter the year
