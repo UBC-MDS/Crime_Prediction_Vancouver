@@ -18,5 +18,4 @@ dependencies:
   - pip
   - pip:
     - rpy2
-    - cookiecutter
     - jupyter-book
