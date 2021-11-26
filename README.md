@@ -22,6 +22,14 @@ Once the prediction model is completed, we will publish an executive summary in 
 
 ## Usage
 
+### Analysis execution
+
+Execute the data analysis pipeline of the `Crime Vancouver` data set by running the following command in `terminal`:
+
+```bash
+sh pipeline.sh
+```
+
 ### Conda environment
 
 To replicate the analysis and run the predictor, download the conda environment file to your computer [here](crime_predictor.yaml). Then create and activate the conda environment as follows:
@@ -35,13 +43,7 @@ conda activate crime_predictor
 
 Download the latest version of R at `https://cran.r-project.org`. Follow the installer instructions.
 
-### Data set
 
-Download the `Crime Vancouver` data set by running the following command in `terminal`:
-
-```bash
-python src/download_data.py --url="https://geodash.vpd.ca/opendata/crimedata_download/crimedata_csv_all_years.zip?disclaimer=on" --file_path="data/raw" --zip_file_name="crimedata_csv_all_years.csv"
-```
 
 ## Dependencies
 
