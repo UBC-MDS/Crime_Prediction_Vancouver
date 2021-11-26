@@ -62,6 +62,7 @@ In case of replicating the analysis without using `conda`, the following are the
   - pip
   - rpy2
   - kaggle
+  - dataframe-image
 
 - R version 4.1.1 and R packages:
   - knitr
