@@ -1,0 +1,49 @@
+---
+title: "Vancouver Crime Prediction Report"
+author: "Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang </br>"
+bibliography: references.bib
+output: 
+  github_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(knitr)
+library(reticulate)
+```
+
+## Summary
+
+In this project, we attempt to create a classification prediction model to predict the types of crimes that happens in Vancouver, BC based on neighborhood location and time of the crime. When tested on the unseen test data, the final classifier, LogisticRegression, performed mediocre. Of the 7504 test cases, PLACEHOLDER cases were correctly predicted the optimized model.
+
+## Introduction
+
+Crime is a daily occurrence in large cities, and Vancouver is no exception to this rule. While crime is impossible to avoid in a large metropolitan city, we are interested in seeing if the categories of crimes and timing of crime can be correlated with certain neighborhoods in Vancouver. 
+
+## Methods
+The Python programming language [@Python] and the following Python packages were used to perform the analysis: Pandas [@Pandas], Numpy [@Numpy], Sci-Kit Learn [@Scikit], Altair [@Altair]
+
+
+The code used to perform the analysis and create this report can be found here: https://github.com/UBC-MDS/DSCI_522_Crime_Prediction_Vancouver/blob/main/src/modelling.ipynb
+
+
+## Data
+The data was collected by the Vancouver Police Department from 2004 to 2020 and is a log of all crimes committed. Each row in the dataset represents the crime committed, the time of day, neighborhood, the hundreds block the crime occurred on, as well as the X and Y coordinates of the crime location. It is updated weekly by the VPD, but there is about a two to three month lag in logging present day crime. 
+
+## Analysis
+The LogisticRegressor algorithm was used to classify the different categories of crimes in Vancouver. It performed best out of the models tested, including DummyClassifier, RandomForestClassifier, and RidgeClassifier. The hyperparameters C and class_weight were optimized via RandomizedSearchCV. The best model performed using C = PLACEHOLDER and class_weight = PLACEHOLDER. From the confusion matrix, we can see that the LogisticRegressor model was able to identify PLACEHOLDER on the test data.
+
+```{r confusion-matrix, echo=FALSE, fig.height = 10, fig.width = 3, fig.cap = "Confusion Matrix of LogisticRegressor performance on test data", out.width = "25%"}
+# here we can print the confusion matrix .
+
+include_graphics('../results/PLACEHOLDER.png')
+
+```
+
+## Results and Discussion
+To further improve the model in the future, we recommend PLACEHOLDER
+
+## References
+
