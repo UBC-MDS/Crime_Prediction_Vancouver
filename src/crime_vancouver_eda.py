@@ -1,5 +1,7 @@
-# author: Group 24
+# author: Group 24 (Shi Yan Wang)
+# contributors: Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu
 # date: 2021-11-25
+# last updated: 2021-11-27
 
 ''' Creates eda plots for the pre-processed training data from the Crime Vancouver Data
     (from https://geodash.vpd.ca/opendata/) and saves the plots as png files

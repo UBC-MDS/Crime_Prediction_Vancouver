@@ -1,5 +1,8 @@
-# author: Group 24
+# author: Thomas Siu (Group 24)
+# contributors: Ramiro Francisco Mejia, Jasmine Ortega, Shi Yan Wang
 # date: 2021-11-25
+# last updated: 2021-11-27
+
 
 '''This script cleans, normalize and splits the Crime Vancouver data (from https://geodash.vpd.ca/opendata/)
 

@@ -1,5 +1,7 @@
-# author: Group 24
+# author: Thomas Siu (Group 24)
+# contributors: Ramiro Francisco Mejia, Jasmine Ortega, Shi Yan Wang
 # date: 2021-11-19
+# last updated: 2021-11-27
 
 '''This script downloads data from the given url to a local path and perform unzip if needed.
 
