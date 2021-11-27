@@ -53,7 +53,6 @@ neighborhoods and types of crime was examined. From the heatmap below,
 the Central Business District (compromising of the downtown area)
 appears to be the most active neighborhood for crime.
 
-Figure 1: Heatmap of Crimes and Neighborhood
 <img src="../src/figure-eda/crime_correlation.png" title="Fig 1. Heatmap of Crimes and Neighborhood" alt="Fig 1. Heatmap of Crimes and Neighborhood" width="200%" />
 
 This observation was formalized by the histogram below. The Central
@@ -61,9 +60,9 @@ Business District, followed by neighboring West End, Mount Pleasant,
 Strathacona, and Fairview are the neighborhoods with the most crime
 logged by the VPD.
 
-Figure 2: Top 5 Neighborhoods with Crime
-
 ![](../src/figure-eda/crime_top5.png)
+
+Figure 2: Top 5 Neighborhoods with Crime
 
 Additionally, we examined the distribution of crimes committed against
 hours. A significant amount of cases happened in hour 0. However, this
@@ -73,13 +72,9 @@ unknown or not available. To counteract this imabalance, data
 re-balancing was done by averaging out the cases from 0 am and
 re-distributing into 24 hours.
 
-Figure 3. The data prior to data balancing:
+<img src="../src/figure-preprocess/data_before_balance.png" title="Fig 3. Data Before Rebalancing" alt="Fig 3. Data Before Rebalancing" width="70%" />
 
-<img src="../src/figure-preprocess/data_before_balance.png" title="Fig 3.Comparasion of Data Before and After Rebalancing" alt="Fig 3.Comparasion of Data Before and After Rebalancing" width="70%" />
-
-Figure 4. The data after rebalancing:
-
-<img src="../src/figure-preprocess/data_after_balance.png" width="70%" />
+<img src="../src/figure-preprocess/data_after_balance.png" title="Figure 4. The data after rebalancing" alt="Figure 4. The data after rebalancing" width="70%" />
 
 Prior to model fitting, the data was preprocessed via column
 transformers. SimpleImputer and OneHotEncoder were applied to the
@@ -93,10 +88,10 @@ categories of crimes in Vancouver. It performed best out of the four
 models tested, which included DummyClassifier (to set a baseline score),
 RandomForestClassifier, and RidgeClassifier. Scoring was done using f-1,
 which is the harmonic mean of precision and recall of the classifier. As
-seen below in figure 1, LogisticRegressor has fractionally higher test
+seen below in figure 5, LogisticRegressor has fractionally higher test
 scores than RandomForest and RidgeClassifier
 
-<img src="../results/models_results_cv.png" title="Fig 4. Model Results" alt="Fig 4. Model Results" width="200%" />
+<img src="../results/models_results_cv.png" title="Fig 5. Model Results" alt="Fig 5. Model Results" width="200%" />
 
 For LogisticRegression, hyperparameters C and class_weight were
 optimized via RandomizedSearchCV to maximize f-1. The best model
@@ -109,20 +104,22 @@ performed using C = 100 and class_weight = None.
     parameters overall, but the best parameter that could be fit in the
     given time frame.
 
-Fig 5. Model Results ![](../results/best_LR_model.png)
+![](../results/best_LR_model.png)
+
+Fig 6. Model Results
 
 From the confusion matrix, we can see that the LogisticRegressor model
 performed poorly. The confusion matrix can be interpeted as a heatmap,
 with true positives predicted along the diagonal. The model rarely
 predicted true positives for each label.
 
-<img src="../results/confusion_matrix.png" title="Fig 6. Confusion Matrix of LogisticRegressor performance on test data" alt="Fig 6. Confusion Matrix of LogisticRegressor performance on test data" width="200%" />
+<img src="../results/confusion_matrix.png" title="Fig 7. Confusion Matrix of LogisticRegressor performance on test data" alt="Fig 7. Confusion Matrix of LogisticRegressor performance on test data" width="200%" />
 
 Furthermore, based on the precision, recall, f1-scores, and support of
 the classification report, there is further confirmation of the model’s
 poor performance.
 
-<img src="../results/classification_report.png" title="Fig 7. Classification Report of Targets" alt="Fig 7. Classification Report of Targets" width="300%" />
+<img src="../results/classification_report.png" title="Fig 8. Classification Report of Targets" alt="Fig 8. Classification Report of Targets" width="300%" />
 
 ## Results and Discussion
 
