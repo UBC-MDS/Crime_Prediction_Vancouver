@@ -53,7 +53,9 @@ neighborhoods and types of crime was examined. From the heatmap below,
 the Central Business District (compromising of the downtown area)
 appears to be the most active neighborhood for crime.
 
-<img src="../src/figure-eda/crime_correlation.png" title="Fig 1. Heatmap of Crimes and Neighborhood" alt="Fig 1. Heatmap of Crimes and Neighborhood" width="200%" />
+<img src="../src/figure-eda/crime_correlation.png" width="200%" />
+
+Fig 1. Heatmap of Crimes and Neighborhood
 
 This observation was formalized by the histogram below. The Central
 Business District, followed by neighboring West End, Mount Pleasant,
@@ -72,9 +74,13 @@ unknown or not available. To counteract this imabalance, data
 re-balancing was done by averaging out the cases from 0 am and
 re-distributing into 24 hours.
 
-<img src="../src/figure-preprocess/data_before_balance.png" title="Fig 3. Data Before Rebalancing" alt="Fig 3. Data Before Rebalancing" width="70%" />
+<img src="../src/figure-preprocess/data_before_balance.png" width="70%" />
 
-<img src="../src/figure-preprocess/data_after_balance.png" title="Figure 4. The data after rebalancing" alt="Figure 4. The data after rebalancing" width="70%" />
+Fig 3. Data Before Rebalancing
+
+<img src="../src/figure-preprocess/data_after_balance.png" width="70%" />
+
+Figure 4. The data after rebalancing
 
 Prior to model fitting, the data was preprocessed via column
 transformers. SimpleImputer and OneHotEncoder were applied to the
@@ -91,11 +97,11 @@ which is the harmonic mean of precision and recall of the classifier. As
 seen below in figure 5, LogisticRegressor has fractionally higher test
 scores than RandomForest and RidgeClassifier
 
-<img src="../results/models_results_cv.png" title="Fig 5. Model Results" alt="Fig 5. Model Results" width="200%" />
+<img src="../results/models_results_cv.png" width="200%" />
 
-For LogisticRegression, hyperparameters C and class_weight were
-optimized via RandomizedSearchCV to maximize f-1. The best model
-performed using C = 100 and class_weight = None.
+Fig 5. Model Results For LogisticRegression, hyperparameters `C` and
+`class_weight` were optimized via RandomizedSearchCV to maximize f-1.
+The best model performed using `C = 100` and `class_weight = None`.
 
 -   Note: due to the time complexity of the model, the hyperparameter
     optimization took a significant amount of time to complete.
@@ -113,13 +119,17 @@ performed poorly. The confusion matrix can be interpeted as a heatmap,
 with true positives predicted along the diagonal. The model rarely
 predicted true positives for each label.
 
-<img src="../results/confusion_matrix.png" title="Fig 7. Confusion Matrix of LogisticRegressor performance on test data" alt="Fig 7. Confusion Matrix of LogisticRegressor performance on test data" width="200%" />
+<img src="../results/confusion_matrix.png" width="200%" />
+
+Fig 7. Confusion Matrix of LogisticRegressor performance on test data
 
 Furthermore, based on the precision, recall, f1-scores, and support of
 the classification report, there is further confirmation of the model’s
 poor performance.
 
-<img src="../results/classification_report.png" title="Fig 8. Classification Report of Targets" alt="Fig 8. Classification Report of Targets" width="300%" />
+<img src="../results/classification_report.png" width="300%" />
+
+Fig 8. Classification Report of Targets
 
 ## Results and Discussion
 

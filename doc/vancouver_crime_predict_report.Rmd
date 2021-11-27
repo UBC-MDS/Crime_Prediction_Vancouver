@@ -3,7 +3,7 @@ title: "Vancouver Crime Prediction Report"
 author: "Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang </br>"
 bibliography: references.bib
 output: 
-  html_document:
+  github_document:
     toc: true
 ---
 
@@ -36,13 +36,19 @@ The data was collected by the Vancouver Police Department from 2016 to 2020 and 
 
 In our initial exploratory data analysis, the relationship between neighborhoods and types of crime was examined. From the heatmap below, the Central Business District (compromising of the downtown area) appears to be the most active neighborhood for crime.
 
-```{r Heatmap, echo=FALSE, fig.height = 10, fig.width = 10, fig.cap = "Fig 1. Heatmap of Crimes and Neighborhood", out.width = "200%"}
+```{r Heatmap, echo=FALSE, fig.height = 10, fig.width = 10, out.width = "200%"}
 
 include_graphics('../src/figure-eda/crime_correlation.png')
 
 ```
 
+
+Fig 1. Heatmap of Crimes and Neighborhood
+
 This observation was formalized by the histogram below. The Central Business District, followed by neighboring West End, Mount Pleasant, Strathacona, and Fairview are the neighborhoods with the most crime logged by the VPD.
+
+
+
 
 
 ![](../src/figure-eda/crime_top5.png)
@@ -53,16 +59,20 @@ Figure 2: Top 5 Neighborhoods with Crime
 Additionally, we examined the distribution of crimes committed against hours. A significant amount of cases happened in hour 0. However, this appears to be an issue within the dataset. It appears many crimes logged at 0 AM as a default in cases where the original time of the crime is unknown or not available. To counteract this imabalance, data re-balancing was done by averaging out the cases from 0 am and re-distributing into 24 hours.
 
 
-```{r Hour Pre-Rebalancing, echo=FALSE, fig.height = 3, fig.width = 5, fig.cap = "Fig 3. Data Before Rebalancing", out.width = "70%"}
+```{r Hour Pre-Rebalancing, echo=FALSE, fig.height = 3, fig.width = 5, out.width = "70%"}
 
 include_graphics('../src/figure-preprocess/data_before_balance.png')
 ```
 
 
-```{r Hour Rebalancing, echo=FALSE, fig.height = 3, fig.width = 5, fig.cap = "Figure 4. The data after rebalancing", out.width = "70%"}
+Fig 3. Data Before Rebalancing
+
+```{r Hour Rebalancing, echo=FALSE, fig.height = 3, fig.width = 5, out.width = "70%"}
 
 include_graphics('../src/figure-preprocess/data_after_balance.png')
 ```
+
+Figure 4. The data after rebalancing
 
 
 Prior to model fitting, the data was preprocessed via column transformers. SimpleImputer and OneHotEncoder were applied to the categorical feature, "Neighbourhood". OneHotEncoding was used for the date components, "Year", "Month", "Hour" and "Minute". And finally, SimpleImputer and StandardScaler were applied to "X"and "Y", which are coordinate points of the crime location
@@ -71,13 +81,15 @@ The LogisticRegressor algorithm was used to classify the different categories of
 
 
 
-```{r Model results, echo=FALSE, fig.height = 10, fig.width = 10, fig.cap = "Fig 5. Model Results", out.width = "200%"}
+```{r Model results, echo=FALSE, fig.height = 10, fig.width = 10,, out.width = "200%"}
 
 include_graphics('../results/models_results_cv.png')
 
 ```
 
-For LogisticRegression, hyperparameters C and class_weight were optimized via RandomizedSearchCV to maximize f-1. The best model performed using C = 100 and class_weight = None.
+
+Fig 5. Model Results
+For LogisticRegression, hyperparameters `C` and `class_weight` were optimized via RandomizedSearchCV to maximize f-1. The best model performed using `C = 100` and `class_weight = None`.
 
 -   Note: due to the time complexity of the model, the hyperparameter optimization took a significant amount of time to complete. RandomizedSearchCV returns the best parameters it can find in a set amount of time, so it's possible that these are not the best parameters overall, but the best parameter that could be fit in the given time frame.
 
@@ -90,19 +102,25 @@ Fig 6. Model Results
 
 From the confusion matrix, we can see that the LogisticRegressor model performed poorly. The confusion matrix can be interpeted as a heatmap, with true positives predicted along the diagonal. The model rarely predicted true positives for each label.
 
-```{r Confusion Mqtrix, echo=FALSE, fig.height = 5, fig.width = 5, fig.cap = "Fig 7. Confusion Matrix of LogisticRegressor performance on test data", out.width = "200%"}
+```{r Confusion Mqtrix, echo=FALSE, fig.height = 5, fig.width = 5, out.width = "200%"}
 
 include_graphics('../results/confusion_matrix.png')
 
 ```
 
+Fig 7. Confusion Matrix of LogisticRegressor performance on test data
+
 Furthermore, based on the precision, recall, f1-scores, and support of the classification report, there is further confirmation of the model's poor performance.
 
-```{r classification report, echo=FALSE, fig.height = 15, fig.width = 10, fig.cap = "Fig 8. Classification Report of Targets", out.width = "300%"}
+```{r classification report, echo=FALSE, fig.height = 15, fig.width = 10, out.width = "300%"}
 
 include_graphics('../results/classification_report.png')
 
 ```
+
+
+Fig 8. Classification Report of Targets
+
 
 ## Results and Discussion
 
