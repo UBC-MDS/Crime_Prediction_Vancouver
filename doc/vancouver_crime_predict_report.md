@@ -7,9 +7,8 @@ Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang </br>
 -   [Methods](#methods)
 -   [Data](#data)
 -   [Analysis](#analysis)
--   [`{r Top 5 Crime Neighbourhoods, echo=FALSE, fig.height = 5, fig.width = 5, fig.cap = "Fig 2. Top 5 Neighborhoods with Crime", out.width = "100%"} #   # include_graphics('../src/figure-eda/crime_top5.png') #  #`](#r-top-5-crime-neighbourhoods-echofalse-figheight--5-figwidth--5-figcap--fig-2-top-5-neighborhoods-with-crime-outwidth--100-----include_graphicssrcfigure-edacrime_top5png---)
-    -   [Results and Discussion](#results-and-discussion)
-    -   [References](#references)
+-   [Results and Discussion](#results-and-discussion)
+-   [References](#references)
 
 ## Summary
 
@@ -66,8 +65,6 @@ Figure 2: Top 5 Neighborhoods with Crime
 
 ![](../src/figure-eda/crime_top5.png)
 
-# `{r Top 5 Crime Neighbourhoods, echo=FALSE, fig.height = 5, fig.width = 5, fig.cap = "Fig 2. Top 5 Neighborhoods with Crime", out.width = "100%"} #   # include_graphics('../src/figure-eda/crime_top5.png') #  #`
-
 Additionally, we examined the distribution of crimes committed against
 hours. A significant amount of cases happened in hour 0. However, this
 appears to be an issue within the dataset. It appears many crimes logged
@@ -112,11 +109,12 @@ performed using C = 100 and class_weight = None.
     parameters overall, but the best parameter that could be fit in the
     given time frame.
 
-<img src="../results/best_LR_model.png" title="Fig 5. Model Results" alt="Fig 5. Model Results" width="100%" />
+Fig 5. Model Results ![](../results/best_LR_model.png)
 
 From the confusion matrix, we can see that the LogisticRegressor model
-performed poorly. The model rarely predicted true positives for each
-label.
+performed poorly. The confusion matrix can be interpeted as a heatmap,
+with true positives predicted along the diagonal. The model rarely
+predicted true positives for each label.
 
 <img src="../results/confusion_matrix.png" title="Fig 6. Confusion Matrix of LogisticRegressor performance on test data" alt="Fig 6. Confusion Matrix of LogisticRegressor performance on test data" width="200%" />
 
