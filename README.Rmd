@@ -73,7 +73,7 @@ python src/split_data.py --input_path=data/raw/crimedata_csv_all_years.csv --out
 # perform EDA
 python src/crime_vancouver_eda.py --input_path=data/processed/training_df.csv --out_dir=src/figure-eda/
 
-# render EDA figures
+# render EDA report
 Rscript -e "rmarkdown::render('src/crime_vancouver_eda.Rmd')"
 
 # create pre-processor for column transformation
