@@ -19,16 +19,41 @@ from docopt import docopt
 
 opt = docopt(__doc__)
 
+
 def download_and_unzip(url, file_path, zip_file_name):
+    """download data from the url. If the file is zipped, also unzip the target file.
+
+    Parameters
+    ----------
+    url : string
+        url of the file to be downloaded
+    file_path : string
+        local path to save the file
+    zip_file_name : string
+        file name that needs to be extracted from the zip
+
+    Examples
+    --------
+    >>> download_and_unzip(url, file_path, zip_file_name)
+    """
+    if not isinstance(url, String):
+        raise TypeError("url should be a string!")
+    if not isinstance(url, file_path):
+        raise TypeError("file_pah should be a string!")
+    if not isinstance(url, zip_file_name):
+        raise TypeError("zip_file_name should be a string!")
+
     try:
         response = urlopen(url)
         zipfile = ZipFile(BytesIO(response.read()))
         zipfile.extract(member=zip_file_name, path=file_path)
-        print(f"The file is unzipped successfully at %s/%s" % (file_path, zip_file_name))
+        print(f"The file is unzipped successfully at %s/%s" %
+              (file_path, zip_file_name))
     except Exception as error:
-        print(f"Error message: %s" %error)
+        print(f"Error message: %s" % error)
         print("Please check if the url points to a zip file!")
     return
+
 
 def main(url, file_path, zip_file_name=None):
 
@@ -37,12 +62,13 @@ def main(url, file_path, zip_file_name=None):
     else:
         data = pd.read_csv(url, header=None)
         try:
-          data.to_csv(file_path, index=False)
-          print(f"The file is downloaded successfully at %s" %file_path)
+            data.to_csv(file_path, index=False)
+            print(f"The file is downloaded successfully at %s" % file_path)
         except:
             os.makedirs(os.path.dirname(file_path))
             data.to_csv(file_path, index=False)
-            print(f"The file is downloaded successfully at %s" %file_path)
+            print(f"The file is downloaded successfully at %s" % file_path)
+
 
 if __name__ == "__main__":
     main(opt['--url'], opt['--file_path'], opt['--zip_file_name'])
