@@ -29,6 +29,19 @@ opt = docopt(__doc__)
 
 
 def main(input_path, out_path):
+    """ Main function that splits the data into train and test.
+
+    Parameters
+    ----------
+    input_path : string
+        source data location.
+    out_path : string
+        location to save the split data
+
+    Examples
+    --------
+    >>> main(input_path, out_path)
+    """
 
     # Read data from csv and filter the year
     df = pd.read_csv(input_path)
