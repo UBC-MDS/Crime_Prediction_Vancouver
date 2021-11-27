@@ -13,4 +13,4 @@ python src/crime_vancouver_eda.py --input_path=data/processed/training_df.csv --
 Rscript -e "rmarkdown::render('src/crime_vancouver_eda.Rmd')"
 python src/pre_process_data.py --out_path=data/processed/
 python src/modelling.py --input_path=data/processed/ --out_path=results/
-#Rscript -e "rmarkdown::render('doc/vancouver_crime_predict_report.Rmd')"
+Rscript -e "rmarkdown::render('doc/vancouver_crime_predict_report.Rmd')"
