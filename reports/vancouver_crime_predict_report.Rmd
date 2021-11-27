@@ -42,6 +42,7 @@ include_graphics('../results/PLACEHOLDER.png')
 
 ```
 
+## Results and Discussion
 To further improve the model in the future, we recommend PLACEHOLDER
 
 ## References
