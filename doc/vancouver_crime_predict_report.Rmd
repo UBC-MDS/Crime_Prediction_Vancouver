@@ -43,7 +43,7 @@ include_graphics('../src/figure-gfm/crime_correlation.png')
 
 This observation was formalized by the histogram below. The Central Business District, followed by neighboring West End, Mount Pleasant, Strathacona, and Fairview are the neighborhoods with the most crime logged by the VPD. 
 
-```{r Heatmap, echo=FALSE, fig.height = 10, fig.width = 10, fig.cap = "Fig 2. Top 5 Neighborhoods with Crime", out.width = "200%"}
+```{r Top 5 Crime Neighbourhoods , echo=FALSE, fig.height = 10, fig.width = 10, fig.cap = "Fig 2. Top 5 Neighborhoods with Crime", out.width = "200%"}
 
 include_graphics('../src/figure-gfm/crime_top5.png')
 
@@ -52,13 +52,24 @@ include_graphics('../src/figure-gfm/crime_top5.png')
 Additionally, we examined the distribution of crimes committed against hours. A significant amount of cases happened in hour 0. However, this appears to be an issue within the dataset. It appears many crimes logged at 0 AM as a default in cases where the original time of the crime is unknown or not available. To counteract this imabalance, data re-balancing was done by averaging out the cases from 0 am and re-distributing into 24 hours.
 
 
+```{r Hour Rebalancing, echo=FALSE, fig.height = 3, fig.width = 5, fig.cap = "Fig 3.Comparasion of Data Before and After Rebalancing", out.width = "70%"}
+
+include_graphics('../src/figure-preprocess/data_before_balance.png')
+include_graphics('../src/figure-preprocess/data_after_balance.png')
+```
 
 Prior to model fitting, the data was preprocessed via column transformers. SimpleImputer and OneHotEncoder were applied to the categorical feature, "Neighbourhood". OneHotEncoding was used for the date components, "Year", "Month", "Hour" and "Minute". And finally, SimpleImputer and StandardScaler were applied to "X"and "Y", which are coordinate points of the crime location
+
+```{r Pipelie, echo=FALSE, fig.height = 10, fig.width = 10, fig.cap = "Fig 4. Model Results", out.width = "200%"}
+
+include_graphics('../results/model_results.g')
+
+```
 
 The LogisticRegressor algorithm was used to classify the different categories of crimes in Vancouver. It performed best out of the four models tested, which included DummyClassifier (to set a baseline score), RandomForestClassifier, and RidgeClassifier. Scoring was done using f-1, which is the harmonic mean of precision and recall of the classifier. As seen below in figure 1, LogisticRegressor has fractionally higher test scores than RandomForest and RidgeClassifier
 
 
-```{r model results, echo=FALSE, fig.height = 10, fig.width = 10, fig.cap = "Fig 3. Model Results", out.width = "200%"}
+```{r Model results, echo=FALSE, fig.height = 10, fig.width = 10, fig.cap = "Fig 5. Model Results", out.width = "200%"}
 
 include_graphics('../results/models_results_cv.png')
 
@@ -73,13 +84,13 @@ For LogisticRegression, hyperparameters C and class_weight were optimized via Ra
 
 From the confusion matrix, we can see that the LogisticRegressor model performed poorly. The model rarely predicted true positives for each label. 
 
-```{r confusion-matrix, echo=FALSE, fig.height = 10, fig.width = 10, fig.cap = "Fig 2. Confusion Matrix of LogisticRegressor performance on test data", out.width = "200%"}
+```{r Confusion Mqtrix, echo=FALSE, fig.height = 10, fig.width = 10, fig.cap = "Fig 6. Confusion Matrix of LogisticRegressor performance on test data", out.width = "200%"}
 
 include_graphics('../results/confusion_matrix.png')
 
 ```
 Furthermore, based on the precision, recall, f1-scores, and support of the classification report, there is further confirmation of the model's poor performance. 
-```{r classification report, echo=FALSE, fig.height = 15, fig.width = 10, fig.cap = "Fig 1. Classification Report of Targets", out.width = "300%"}
+```{r classification report, echo=FALSE, fig.height = 15, fig.width = 10, fig.cap = "Fig 7. Classification Report of Targets", out.width = "300%"}
 
 include_graphics('../results/classification_report.png')
 
