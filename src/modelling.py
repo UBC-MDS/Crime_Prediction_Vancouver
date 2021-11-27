@@ -1,5 +1,7 @@
-# author: Group 24
+# author: Ramiro Francisco Mejia (Group 24)
+# contributors: Jasmine Ortega, Thomas Siu, Shi Yan Wang
 # date: 2021-11-25
+# last updated: 2021-11-27
 
 '''This script models for the Crime Vancouver
 

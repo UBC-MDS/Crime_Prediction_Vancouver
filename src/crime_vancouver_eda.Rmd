@@ -1,16 +1,16 @@
 ---
+title: Exploratory data analysis of Crimes in Vancouver data set
+author: "Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang </br>"
 bibliography: "../doc/references.bib"
 output: 
   github_document:
-    toc: false
+    toc: true
 ---
 
 ```{r setup, include=FALSE, fig.align='center'}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Exploratory data analysis of Crimes in Vancouver data set
-================
 
 # Summary of the data set
 

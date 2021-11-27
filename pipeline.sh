@@ -1,3 +1,7 @@
+# contributors: Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang
+# date: 2021-11-25
+# last updated: 2021-11-27
+
 #rm -rf data/processed/
 #rm -rf data/raw/
 #rm -rf src/figure-preprocess/
