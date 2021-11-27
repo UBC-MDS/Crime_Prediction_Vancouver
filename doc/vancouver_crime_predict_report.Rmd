@@ -33,6 +33,16 @@ The code used to perform the analysis and create this report can be found here: 
 The data was collected by the Vancouver Police Department from 2004 to 2020 and is a log of all crimes committed. Each row in the dataset represents the crime committed, the time of day, neighborhood, the hundreds block the crime occurred on, as well as the X and Y coordinates of the crime location. It is updated weekly by the VPD, but there is about a two to three month lag in logging present day crime. 
 
 ## Analysis
+Prior to model fitting, the data was preprocessed via column transformers. SimpleImputer and OneHotEncoder were applied to categorical feature, "Neighbourhood". OneHotEncoding was used for the date components, "Year", "Month", "Hour" and "Minute". And finally, SimpleImputer and StandardScaler were applied to "X"and "Y", which are coordinate features of each crime. 
+
+```{python}
+# i dont understand how 2 read a pickle
+# import pandas as pd
+# 
+# object = pd.read_pickle(r'../results/pip_best.p')
+```
+
+
 The LogisticRegressor algorithm was used to classify the different categories of crimes in Vancouver. It performed best out of the four models tested, which included DummyClassifier (to set a baseline score), RandomForestClassifier, and RidgeClassifier. Scoring was done using f-1, which is the harmonic mean of precision and recall of the classifier. 
 
 
@@ -41,14 +51,18 @@ The LogisticRegressor algorithm was used to classify the different categories of
 include_graphics('../results/models_results_cv.png')
 
 ```
-For LogisticRegression, hyperparameters C and class_weight were optimized via RandomizedSearchCV. The best model performed using C = 0.01 and class_weight = None.
-From the confusion matrix, we can see that the LogisticRegressor model was able to identify PLACEHOLDER on the test data.
+
+For LogisticRegression, hyperparameters C and class_weight were optimized via RandomizedSearchCV to maximize f-1. The best model performed using C = 0.01 and class_weight = None. Due to the time complexity of the model, the hyperparameter optimization took a significant amount of time to complete. 
+
+
+From the confusion matrix, we can see that the LogisticRegressor model...
 
 ```{r confusion-matrix, echo=FALSE, fig.height = 10, fig.width = 10, fig.cap = "Fig 2. Confusion Matrix of LogisticRegressor performance on test data", out.width = "200%"}
 
 include_graphics('../results/confusion_matrix.png')
 
 ```
+Based on the precision, recall, f1-scores, and support of the classification report, it is clear that the model performed poorly overall. 
 ```{r classification report, echo=FALSE, fig.height = 15, fig.width = 10, fig.cap = "Fig 1. Classification Report of Targets", out.width = "300%"}
 
 include_graphics('../results/classification_report.png')
@@ -56,9 +70,11 @@ include_graphics('../results/classification_report.png')
 ```
 
 ## Results and Discussion
-Overall, the model created performs poorly on the test data. This model would not generalize well on unseen data, thus could be improved upon in future updates. 
+Overall, the model created performs poorly on the test and training data. This model would not generalize well on unseen data, and thus could be improved upon in future updates. 
 
-To further improve the model in the future, we recommend testing different model than LogisticRegressor, RandomForestClassifier, and RidgeClassifier. More importantly, feature engineering could be used to optimize/create new features in the dataset to boost model predictions. Additionally, adding relevant data from an outside source (ie. Vancouver weather, Vancouver unemployment rates, etc.) could be useful to create more meaningful features for the model to train on. 
+Ultimately, the most likely explanation for the model's poor performance is the quality of input data used. Even with hyperparameter optimization, the model did not improve much. To further improve the model in the future, feature engineering could be used to optimize/create new features in the dataset to boost model predictions. Additionally, adding relevant data from an outside source (ie. Vancouver weather, Vancouver unemployment rates, etc.) could be useful to create more meaningful features for the model to train on. Finally, testing different model than LogisticRegressor, RandomForestClassifier, and RidgeClassifier may result in a better performing model. 
+
+
 
 ## References
 
