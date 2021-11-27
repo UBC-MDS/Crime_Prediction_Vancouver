@@ -15,7 +15,7 @@ neighbourhoods in Vancouver.
 
 <center>
 
-![](figure-gfm/neighbour_crimes.png)<!-- -->
+![](figure-eda/neighbour_crimes.png)<!-- -->
 
 Table 1: Count of crimes of each Neighbourhood.
 
@@ -29,7 +29,7 @@ both classes:
 
 <center>
 
-![](figure-gfm/observations.png)<!-- -->
+![](figure-preprocess/observations.png)<!-- -->
 
 Table 2. Count of observations of each class.
 
@@ -46,7 +46,7 @@ crimes are theft from vehicle and other theft.
 
 <center>
 
-![](figure-gfm/crime_type.png)<!-- -->
+![](figure-eda/crime_type.png)<!-- -->
 
 Figure 1. Crimes in Vancouver in the past 10 years
 
@@ -62,7 +62,7 @@ into the reasons, and this is not the focus of this project.
 
 <center>
 
-![](figure-gfm/crime_evolution.png)<!-- -->
+![](figure-eda/crime_evolution.png)<!-- -->
 
 Figure 2. Evolution of Crimes in Vancouver from 2011 to 2020
 
@@ -78,7 +78,7 @@ and neighbourhoods.
 
 <center>
 
-![](figure-gfm/crime_correlation.png)<!-- -->
+![](figure-eda/crime_correlation.png)<!-- -->
 
 Figure 3. Relationships between neighbourhoods and type of crimes
 
@@ -90,7 +90,7 @@ neighbourhoods.
 
 <center>
 
-![](figure-gfm/crime_top5.png)<!-- -->
+![](figure-eda/crime_top5.png)<!-- -->
 
 Figure 4. Top 5 Neighbourhoods with most crimes
 

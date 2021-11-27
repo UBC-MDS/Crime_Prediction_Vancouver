@@ -36,12 +36,6 @@ def download_and_unzip(url, file_path, zip_file_name):
     --------
     >>> download_and_unzip(url, file_path, zip_file_name)
     """
-    if not isinstance(url, String):
-        raise TypeError("url should be a string!")
-    if not isinstance(url, file_path):
-        raise TypeError("file_pah should be a string!")
-    if not isinstance(url, zip_file_name):
-        raise TypeError("zip_file_name should be a string!")
 
     try:
         response = urlopen(url)
@@ -61,13 +55,12 @@ def main(url, file_path, zip_file_name=None):
         download_and_unzip(url, file_path, zip_file_name)
     else:
         data = pd.read_csv(url, header=None)
-        try:
-            data.to_csv(file_path, index=False)
-            print(f"The file is downloaded successfully at %s" % file_path)
-        except:
+
+        if not os.path.exists(file_path):
             os.makedirs(os.path.dirname(file_path))
-            data.to_csv(file_path, index=False)
-            print(f"The file is downloaded successfully at %s" % file_path)
+
+        data.to_csv(file_path, index=False)
+        print(f"The file is downloaded successfully at %s" % file_path)
 
 
 if __name__ == "__main__":

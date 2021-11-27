@@ -19,7 +19,7 @@ Below we show the number of reported crimes for each neighbourhoods. Note there 
 
 <center>
 
-![](figure-gfm/neighbour_crimes.png)<!-- -->
+![](figure-eda/neighbour_crimes.png)<!-- -->
 
 Table 1: Count of crimes of each Neighbourhood.
 
@@ -32,7 +32,7 @@ Data is split in a way that 80% observations are in the training data set and 20
 
 <center>
 
-![](figure-gfm/observations.png)<!-- -->
+![](figure-preprocess/observations.png)<!-- -->
 
 Table 2. Count of observations of each class.
 
@@ -46,7 +46,7 @@ First, we explore the type of crimes to see if a certain crime is in our best in
 
 <center>
 
-![](figure-gfm/crime_type.png)<!-- -->
+![](figure-eda/crime_type.png)<!-- -->
 
 Figure 1. Crimes in Vancouver in the past 10 years
 
@@ -56,7 +56,7 @@ If we look at how the crimes evolved over the past ten years, we can see that th
 
 <center>
 
-![](figure-gfm/crime_evolution.png)<!-- -->
+![](figure-eda/crime_evolution.png)<!-- -->
 
 Figure 2. Evolution of Crimes in Vancouver from 2011 to 2020
 
@@ -66,7 +66,7 @@ To view where most observations lie and the correlation between neighbourhood an
 
 <center>
 
-![](figure-gfm/crime_correlation.png)<!-- -->
+![](figure-eda/crime_correlation.png)<!-- -->
 
 Figure 3. Relationships between neighbourhoods and type of crimes
 
@@ -77,7 +77,7 @@ Below you can find the top 5 neighbourhoods with the most reported crime cases, 
 
 <center>
 
-![](figure-gfm/crime_top5.png)<!-- -->
+![](figure-eda/crime_top5.png)<!-- -->
 
 Figure 4. Top 5 Neighbourhoods with most crimes
 
