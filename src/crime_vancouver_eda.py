@@ -24,10 +24,8 @@ opt = docopt(__doc__)
 
 def main(input_path, out_dir):
     
-    # Read data from csv and get the train data
+    # Read data from csv to get the train data
     df = pd.read_csv(input_path)
-    df = df.query('2010 < YEAR <= 2020')
-    train_df, test_df = train_test_split(df, test_size=0.20, random_state=123)
 
     
     # Use train_df to explore trends and relationships
