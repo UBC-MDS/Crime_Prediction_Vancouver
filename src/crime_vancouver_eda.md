@@ -13,13 +13,13 @@ past ten years’ data here (from 2011 to 2021). Below we show the number
 of reported crimes for each neighbourhoods. Note there are 24
 neighbourhoods in Vancouver.
 
-<center>
+<p align="center">
 
 ![](figure-gfm/neighbour_crimes.png)<!-- -->
 
 Table 1: Count of crimes of each Neighbourhood.
 
-</center>
+</p>
 
 # Data split into training and test sets
 
@@ -27,13 +27,13 @@ Data is split in a way that 80% observations are in the training data
 set and 20% are for testing. Below we list the counts of observations of
 both classes:
 
-<center>
+<p align="center">
 
 ![](figure-gfm/observations.png)<!-- -->
 
 Table 2. Count of observations of each class.
 
-</center>
+</p>
 
 We will now further investigate the training data set on its trends and
 correlations.
@@ -44,13 +44,13 @@ First, we explore the type of crimes to see if a certain crime is in our
 best interest. From below distribution of crime types, over 50% of
 crimes are theft from vehicle and other theft.
 
-<center>
+<p align="center">
 
 ![](figure-gfm/crime_type.png)<!-- -->
 
 Figure 1. Crimes in Vancouver in the past 10 years
 
-</center>
+</p>
 
 If we look at how the crimes evolved over the past ten years, we can see
 that the crime cases level is relatively stable from 2011 to 2018.
@@ -60,13 +60,13 @@ Vancouver. This may be due to the start of Covid that causes a series of
 social problems. However, the data set does not provide more insights
 into the reasons, and this is not the focus of this project.
 
-<center>
+<p align="center">
 
 ![](figure-gfm/crime_evolution.png)<!-- -->
 
 Figure 2. Evolution of Crimes in Vancouver from 2011 to 2020
 
-</center>
+</p>
 
 To view where most observations lie and the correlation between
 neighbourhood and types of crime, we plot the categorical groups with
@@ -76,25 +76,25 @@ vehicles and others) are reported at Arbutus Ridge Neighbourhood. This
 indicates that there can be some relationships between types of crime
 and neighbourhoods.
 
-<center>
+<p align="center">
 
 ![](figure-gfm/crime_correlation.png)<!-- -->
 
 Figure 3. Relationships between neighbourhoods and type of crimes
 
-</center>
+</p>
 
 Below you can find the top 5 neighbourhoods with the most reported crime
 cases, which suggests that crimes are more likely to happen in certain
 neighbourhoods.
 
-<center>
+<p align="center">
 
 ![](figure-gfm/crime_top5.png)<!-- -->
 
 Figure 4. Top 5 Neighbourhoods with most crimes
 
-</center>
+</p>
 
 # Reference
 
