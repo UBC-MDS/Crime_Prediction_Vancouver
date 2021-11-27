@@ -67,20 +67,11 @@ final report can be found [here](doc/vancouver_crime_predict_report.md)
 
 ## Usage
 
-### Analysis execution
-
-Execute the data analysis pipeline of the `Crime Vancouver` data set by
-running the following command in `terminal`:
-
-``` bash
-sh pipeline.sh
-```
-
-### Conda environment
-
 To replicate the analysis and run the predictor, download the conda
 environment file to your computer [here](crime_predictor.yaml). Then
 create and activate the conda environment as follows:
+
+### Conda environment
 
 ``` bash
 conda env create -f crime_predictor.yaml
@@ -91,6 +82,40 @@ conda activate crime_predictor
 
 Download the latest version of R at `https://cran.r-project.org`. Follow
 the installer instructions.
+
+### Analysis execution
+
+Execute the data analysis pipeline of the `Crime Vancouver` data set by
+running the following command in `terminal`:
+
+``` bash
+sh pipeline.sh
+```
+
+Or the following commands in sequence:
+
+``` bash
+# download the data
+python src/download_data.py --url=https://geodash.vpd.ca/opendata/crimedata_download/crimedata_csv_all_years.zip?disclaimer=on --file_path=data/raw --zip_file_name=crimedata_csv_all_years.csv
+
+# split the data into train and test
+python src/split_data.py --input_path=data/raw/crimedata_csv_all_years.csv --out_path=data/processed/  --graph_path=src/figure-preprocess/
+
+# perform EDA
+python src/crime_vancouver_eda.py --input_path=data/processed/training_df.csv --out_dir=src/figure-eda/
+
+# render EDA figures
+Rscript -e "rmarkdown::render('src/crime_vancouver_eda.Rmd')"
+
+# create pre-processor for column transformation
+python src/pre_process_data.py --out_path=data/processed/
+
+# fit and tune the model
+python src/modelling.py --input_path=data/processed/ --out_path=results/
+
+# render final report
+Rscript -e "rmarkdown::render('doc/vancouver_crime_predict_report.Rmd')"
+```
 
 ## Dependencies
 
