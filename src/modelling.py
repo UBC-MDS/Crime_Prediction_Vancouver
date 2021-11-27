@@ -287,7 +287,7 @@ def best_LR_model(X_train, y_train, preprocessor):
                                                                                                                 "param_logisticregression__class_weight"]].T
 
     search_df = search_df.rename(index={'param_logisticregression__C': "Best C",
-                                        "param_logisticregression__class_weight": "Best weight"}, columns={2: 'value'})
+                                        "param_logisticregression__class_weight": "Best weight"}, columns={list(search_df)[0]: 'value'})
 
     best_C = search.best_params_['logisticregression__C']
     best_weight = search.best_params_['logisticregression__class_weight']
