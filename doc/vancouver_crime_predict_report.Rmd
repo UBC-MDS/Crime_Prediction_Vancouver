@@ -43,7 +43,7 @@ include_graphics('../src/figure-eda/crime_correlation.png')
 ```
 
 
-Fig 1. Heatmap of Crimes and Neighborhood
+Figure 1. Heatmap of Crimes and Neighborhood
 
 This observation was formalized by the histogram below. The Central Business District, followed by neighboring West End, Mount Pleasant, Strathacona, and Fairview are the neighborhoods with the most crime logged by the VPD.
 
@@ -65,7 +65,7 @@ include_graphics('../src/figure-preprocess/data_before_balance.png')
 ```
 
 
-Fig 3. Data Before Rebalancing
+Figure 3. Data Before Rebalancing
 
 ```{r Hour Rebalancing, echo=FALSE, fig.height = 3, fig.width = 5, out.width = "70%"}
 
@@ -81,45 +81,48 @@ The LogisticRegressor algorithm was used to classify the different categories of
 
 
 
-```{r Model results, echo=FALSE, fig.height = 10, fig.width = 10,, out.width = "200%"}
+```{r Model results, echo=FALSE, fig.height = 10, fig.width = 10,, out.width = "80%"}
 
 include_graphics('../results/models_results_cv.png')
 
 ```
 
 
-Fig 5. Model Results
+Table 1. Model Results based on f1 score
+
 For LogisticRegression, hyperparameters `C` and `class_weight` were optimized via RandomizedSearchCV to maximize f-1. The best model performed using `C = 100` and `class_weight = None`.
 
 -   Note: due to the time complexity of the model, the hyperparameter optimization took a significant amount of time to complete. RandomizedSearchCV returns the best parameters it can find in a set amount of time, so it's possible that these are not the best parameters overall, but the best parameter that could be fit in the given time frame.
 
-![](../results/best_LR_model.png)
+```{r Best Model, echo=FALSE, fig.height = 5, fig.width = 5, out.width = "30%"}
 
+include_graphics('../results/best_LR_model.png')
 
+```
 
-Fig 6. Model Results
+Table 2. Model Results
 
 
 From the confusion matrix, we can see that the LogisticRegressor model performed poorly. The confusion matrix can be interpeted as a heatmap, with true positives predicted along the diagonal. The model rarely predicted true positives for each label.
 
-```{r Confusion Mqtrix, echo=FALSE, fig.height = 5, fig.width = 5, out.width = "200%"}
+```{r Confusion Matrix, echo=FALSE, fig.height = 5, fig.width = 5, out.width = "200%"}
 
 include_graphics('../results/confusion_matrix.png')
 
 ```
 
-Fig 7. Confusion Matrix of LogisticRegressor performance on test data
+Figure 5. Confusion Matrix of LogisticRegressor performance on test data
 
 Furthermore, based on the precision, recall, f1-scores, and support of the classification report, there is further confirmation of the model's poor performance.
 
-```{r classification report, echo=FALSE, fig.height = 15, fig.width = 10, out.width = "300%"}
+```{r classification report, echo=FALSE, fig.height = 15, fig.width = 10, out.width = "80%"}
 
 include_graphics('../results/classification_report.png')
 
 ```
 
 
-Fig 8. Classification Report of Targets
+Table 3. Classification Report of Targets
 
 
 ## Results and Discussion
