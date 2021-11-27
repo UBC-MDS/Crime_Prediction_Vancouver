@@ -60,7 +60,7 @@ def main(input_path, out_path, graph_path):
 
     # Read data from csv and filter the year
     df = pd.read_csv(input_path)
-    df = df.query('2019 < YEAR <= 2020')
+    df = df.query('2015 < YEAR <= 2020')
 
     # Split data into train and test
     train_df, test_df = train_test_split(df, test_size=0.20, random_state=123)
