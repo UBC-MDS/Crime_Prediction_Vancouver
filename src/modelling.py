@@ -11,7 +11,6 @@ Options:
 '''
 import dataframe_image as dfi
 from sklearn.metrics import classification_report
-from scipy.stats import lognorm, loguniform, randint
 import warnings
 import pickle
 from sklearn.metrics import ConfusionMatrixDisplay
@@ -91,7 +90,13 @@ def main(input_path, out_path):
     # Creates a pipeline of the best results
     best_results = best_LR_model(X_train, y_train, preprocessor)
 
+    best_result_df = best_results["scores"]
     pipe_best = make_pipeline(preprocessor, best_results['best_model'])
+
+    filename = 'best_LR_model.png'
+    outfile = open(out_path + "/" + filename, 'wb')
+    dfi.export(best_result_df, outfile,
+               table_conversion="matplotlib")
 
     # Save pipe_best data
     try:
@@ -249,7 +254,7 @@ def best_LR_model(X_train, y_train, preprocessor):
     print("Start hyperparameter tuning")
 
     pipe = make_pipeline(preprocessor,
-                         LogisticRegression(max_iter=1000,
+                         LogisticRegression(max_iter=2000,
                                             multi_class='ovr',))
 
     f1_scorer = make_scorer(f1_score, average='micro')
@@ -268,7 +273,7 @@ def best_LR_model(X_train, y_train, preprocessor):
         pipe,
         param_grid,
         verbose=1,
-        n_jobs=-1,
+        n_jobs=6,
         n_iter=10,
         return_train_score=True,
         scoring=make_scorer(f1_score, average='micro'),
@@ -282,7 +287,7 @@ def best_LR_model(X_train, y_train, preprocessor):
                                                                                                                 "param_logisticregression__class_weight"]].T
 
     search_df = search_df.rename(index={'param_logisticregression__C': "Best C",
-                                        "param_logisticregression__class_weight": "Best weight"})
+                                        "param_logisticregression__class_weight": "Best weight"}, columns={2: 'value'})
 
     best_C = search.best_params_['logisticregression__C']
     best_weight = search.best_params_['logisticregression__class_weight']
