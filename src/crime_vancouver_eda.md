@@ -28,10 +28,12 @@ set and 20% are for testing. Below we list the counts of observations of
 both classes:
 
 <center>
+
 ![](figure-gfm/observations.png)<!-- -->
-</center>
 
 Table 2. Count of observations of each class.
+
+</center>
 
 We will now further investigate the training data set on its trends and
 correlations.
