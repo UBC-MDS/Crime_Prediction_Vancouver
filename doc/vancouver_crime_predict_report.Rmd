@@ -20,7 +20,7 @@ In this project, we attempt to create a classification prediction model to predi
 
 ## Introduction
 
-Crime is a daily occurrence in large cities, and Vancouver is no exception to this rule. While crime is impossible to avoid in a large metropolitan city, we are interested in seeing if the categories of crimes and timing of crime can be correlated with certain neighborhoods in Vancouver. 
+Crime is a daily occurrence in large cities, and Vancouver is no exception to this rule. While crime is impossible to avoid in a large metropolitan city, we are interested in seeing if the categories of crimes and timing of crime can be correlated with certain neighborhoods in Vancouver. This project is for educational purposes only and should not be used to predict crime in real life. 
 
 ## Methods
 The Python programming language [@Python] and the following Python packages were used to perform the analysis: Pandas [@Pandas], Numpy [@Numpy], Sci-Kit Learn [@Scikit], Altair [@Altair]
@@ -35,7 +35,7 @@ The data was collected by the Vancouver Police Department from 2004 to 2020 and 
 ## Analysis
 The LogisticRegressor algorithm was used to classify the different categories of crimes in Vancouver. It performed best out of the models tested, including DummyClassifier, RandomForestClassifier, and RidgeClassifier. The hyperparameters C and class_weight were optimized via RandomizedSearchCV. The best model performed using C = PLACEHOLDER and class_weight = PLACEHOLDER. From the confusion matrix, we can see that the LogisticRegressor model was able to identify PLACEHOLDER on the test data.
 
-```{r confusion-matrix, echo=FALSE, fig.height = 10, fig.width = 3, fig.cap = "Confusion Matrix of LogisticRegressor performance on test data", out.width = "25%"}
+```{r confusion-matrix, echo=FALSE, fig.height = 10, fig.width = 3, fig.cap = "Fig 1. Confusion Matrix of LogisticRegressor performance on test data", out.width = "25%"}
 # here we can print the confusion matrix .
 
 include_graphics('../results/PLACEHOLDER.png')
@@ -43,7 +43,9 @@ include_graphics('../results/PLACEHOLDER.png')
 ```
 
 ## Results and Discussion
-To further improve the model in the future, we recommend PLACEHOLDER
+Overall, the model created performs poorly on the test data. This model would not generalize well on unseen data, and thus definitely could be improved upon in future updates. 
+
+To further improve the model in the future, we recommend testing different model than LogisticRegressor, RandomForestClassifier, and RidgeClassifier. Feature engineering could also be used to optimize/create new features in the dataset to boost model predictions. Additionally, adding relevant data from an outside source (ie. Vancouver weather, Vancouver unemployment rates, etc.) could be useful to create more meaningful features for the model to train on. 
 
 ## References
 
