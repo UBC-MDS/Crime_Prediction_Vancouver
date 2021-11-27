@@ -27,25 +27,27 @@ from sklearn.preprocessing import (
 
 opt = docopt(__doc__)
 
+
 def main(input_path, out_path):
 
     # Read data from csv and filter the year
     df = pd.read_csv(input_path)
-    df = df.query('2019 < YEAR <= 2020')
-    
+    df = df.query('2010 < YEAR <= 2020')
+
     # Split data into train and test
     train_df, test_df = train_test_split(df, test_size=0.20, random_state=123)
-    
+
     # Data cleaning - normalize records which are with HOUR equals to 0
-    rebase_zero_hour_count = len(train_df.query("HOUR == 0")) - int(len(train_df["HOUR"]!=0)/23)
-    rebase_zero_hour_index = train_df[train_df["HOUR"]==0].sample(rebase_zero_hour_count).index
-    train_df.loc[rebase_zero_hour_index, 'HOUR'] = np.random.randint(0, 24, rebase_zero_hour_count)
-    
+    rebase_zero_hour_count = len(train_df.query(
+        "HOUR == 0")) - int(len(train_df["HOUR"] != 0)/23)
+    rebase_zero_hour_index = train_df[train_df["HOUR"] == 0].sample(
+        rebase_zero_hour_count).index
+    train_df.loc[rebase_zero_hour_index, 'HOUR'] = np.random.randint(
+        0, 24, rebase_zero_hour_count)
+
     # Split into feature and target
     X_train, y_train = train_df.drop(columns=["TYPE"]), train_df["TYPE"]
     X_test, y_test = test_df.drop(columns=["TYPE"]), test_df["TYPE"]
-
-    
 
     # Save the train and test data
     try:
@@ -53,9 +55,7 @@ def main(input_path, out_path):
         y_train.to_csv(out_path + "/training_target.csv", index_label="index")
         X_test.to_csv(out_path + "/test_feature.csv", index_label="index")
         y_test.to_csv(out_path + "/test_target.csv", index_label="index")
-        
-          
-        
+
     except Exception as error:
         os.makedirs(os.path.dirname(out_path))
 
@@ -68,10 +68,15 @@ def main(input_path, out_path):
     #    print("Error while saving training and test data!")
 
     print("")
-    print(f"X_train is loaded successfully at %s" %(out_path + "training_feature.csv"))
-    print(f"y_train is loaded successfully at %s" %(out_path + "training_target.csv"))    
-    print(f"X_test is loaded successfully at %s" %(out_path + "test_feature.csv"))   
-    print(f"y_test is loaded successfully at %s" %(out_path + "test_target.csv"))        
-    
+    print(f"X_train is loaded successfully at %s" %
+          (out_path + "training_feature.csv"))
+    print(f"y_train is loaded successfully at %s" %
+          (out_path + "training_target.csv"))
+    print(f"X_test is loaded successfully at %s" %
+          (out_path + "test_feature.csv"))
+    print(f"y_test is loaded successfully at %s" %
+          (out_path + "test_target.csv"))
+
+
 if __name__ == "__main__":
     main(opt['--input_path'], opt['--out_path'])
