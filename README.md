@@ -48,7 +48,7 @@ summarised the number of crimes committed by locations throughout the
 years in a table. We also identified the correlation chart of the data
 features with the crime types. Detailed EDA report was generated that
 includes other EDA results. It can be found
-[here](src/Crime_vancouver_eda.md).
+[here](src/crime_vancouver_eda.md).
 
 After EDA, we started to adopt the methodology in supervised machine
 learning for the prediction. Firstly we created a column transformation
@@ -65,6 +65,8 @@ matrix and classification report to assess the performance of
 claissfying each target class.
 
 The following flow chart illustrates the overall steps:
+
+Figure 1. Flow chart of the analysis process
 
 <img src="src/flow_chart.png" width="80%" height="80%">
 
