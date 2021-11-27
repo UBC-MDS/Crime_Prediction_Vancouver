@@ -2,6 +2,7 @@
 title: "Vancouver Crime Prediction Report"
 author: "Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang </br>"
 bibliography: references.bib
+date: "`r Sys.Date()`"
 output: 
   github_document:
     toc: true

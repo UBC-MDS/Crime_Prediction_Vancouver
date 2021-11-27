@@ -1,6 +1,7 @@
 Exploratory data analysis of Crimes in Vancouver data set
 ================
 Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang </br>
+2021-11-27
 
 -   [Summary of the data set](#summary-of-the-data-set)
 -   [Data split into training and test
