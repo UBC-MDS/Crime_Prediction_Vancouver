@@ -57,7 +57,7 @@ Figure 2: Top 5 Neighborhoods with Crime
 
 ### Data cleaning
 
-Additionally, we examined the distribution of crimes committed against hours. A significant amount of cases happened in hour 0. However, this appeared to be an issue within the dataset. It appeared many crimes logged at 0 AM as a default in cases where the original time of the crime is unknown or not available. Also, based on the data description provided by the VPD, the hour information was based on the findings of the police investigation. Thus we assumed some examples falling into hour 0 could have happened in other time in the same day. To counteract this imabalance, data re-balancing was done by averaging out the cases from 0 am and re-distributing into 24 hours.
+Additionally, we examined the distribution of crimes committed against hours. A significant amount of cases happened in hour 0. However, this appeared to be an issue within the dataset. It appeared many crimes logged at 0 AM as a default in cases where the original time of the crime is unknown or not available. Also, based on the data description provided by the VPD, the hour information was based on the findings of the police investigation. See [here](../data/raw/VPD OpenData Crime Incidents Description.pdf) for the data specification. Thus we assumed some examples falling into hour 0 could have happened in other time in the same day. To counteract this imabalance, data re-balancing was done by averaging out the cases from 0 am and re-distributing into 24 hours.
 
 
 ```{r Hour Pre-Rebalancing, echo=FALSE, fig.height = 3, fig.width = 5, out.width = "50%"}

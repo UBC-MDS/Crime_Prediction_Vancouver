@@ -96,7 +96,9 @@ appeared to be an issue within the dataset. It appeared many crimes
 logged at 0 AM as a default in cases where the original time of the
 crime is unknown or not available. Also, based on the data description
 provided by the VPD, the hour information was based on the findings of
-the police investigation. Thus we assumed some examples falling into
+the police investigation. See
+[here](../data/raw/VPD%20OpenData%20Crime%20Incidents%20Description.pdf)
+for the data specification. Thus we assumed some examples falling into
 hour 0 could have happened in other time in the same day. To counteract
 this imabalance, data re-balancing was done by averaging out the cases
 from 0 am and re-distributing into 24 hours.
