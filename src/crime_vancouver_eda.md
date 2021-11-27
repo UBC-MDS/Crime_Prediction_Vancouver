@@ -80,7 +80,7 @@ To view where most observations lie and the correlation between
 neighbourhood and types of crime, we plot the categorical groups with
 the correlation plot as below. We can see that data concentrate on some
 categorical groups. For example, a high volume of thefts (both from
-vehicles and others) are reported at Arbutus Ridge Neighbourhood. This
+vehicles and others) are reported at Central Business District. This
 indicates that there can be some relationships between types of crime
 and neighbourhoods.
 
