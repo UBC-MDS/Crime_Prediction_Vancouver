@@ -23,36 +23,46 @@ from sklearn.preprocessing import (
     StandardScaler,
 )
 
+from sklearn.dummy import DummyClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression, RidgeClassifier
+
 opt = docopt(__doc__)
 
 def main(out_path):
    
-    # Define columns for transformation
     drop_features = ["HUNDRED_BLOCK"]
-    neighbour_feature = ["NEIGHBOURHOOD"]
+    categorical_feature_n = ["NEIGHBOURHOOD"]
     categorical_features = ["YEAR", "MONTH", "DAY", "HOUR", "MINUTE"]
-    numeric_features = ["X", "Y"]
+    numerical_features = ["X", "Y"]
 
     # preprocessor for EDA and model training
     preprocessor = make_column_transformer(
-        (
-            make_pipeline(
-                SimpleImputer(strategy="constant", fill_value="Central Business District"),
+
+        (make_pipeline(
+                SimpleImputer(strategy="constant", fill_value="most_frequent"),
                 OneHotEncoder(handle_unknown="ignore", sparse=False),
-            ),
-            neighbour_feature,
+            ), categorical_feature_n,
         ),
-        (OneHotEncoder(handle_unknown="ignore", sparse=False), categorical_features),
-       (
-           make_pipeline(
-               SimpleImputer(strategy="median"),
-               StandardScaler(),
-           ),
-           numeric_features
-       ),
+
+        (OneHotEncoder(handle_unknown="ignore", drop='if_binary',
+                       sparse=False), categorical_features),
+
+         (make_pipeline(
+                  SimpleImputer(strategy="most_frequent"), # these are coordinates
+                   StandardScaler(),
+            ), numerical_features
+        ),
+       
         ("drop", drop_features),
     )
     
+    models = {
+    "DummyClassifier": DummyClassifier(),
+    "LogisticRegression": LogisticRegression(max_iter=1000, multi_class="ovr"),
+    "RandomForest": RandomForestClassifier(),
+    "RidgeClassifier": RidgeClassifier()
+    }
 
     # Save pre-processed data        
     try:
@@ -66,6 +76,20 @@ def main(out_path):
     except Exception as error:
         print(f"Error message: %s" %error)
         print("Error while saving pre-processor!")
+
+
+    # Save models dictionary        
+    try:
+        filename = 'models.p'
+        outfile = open(out_path+ "/" + filename,'wb')
+        pickle.dump(models, outfile)
+        outfile.close()
+        
+        print(f"models is loaded successfully at %s" %(out_path + filename))    
+        
+    except Exception as error:
+        print(f"Error message: %s" %error)
+        print("Error while saving models!")
     
 if __name__ == "__main__":
     main(opt['--out_path'])
