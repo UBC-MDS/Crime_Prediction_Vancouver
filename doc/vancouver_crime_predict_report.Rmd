@@ -35,10 +35,10 @@ The data was collected by the Vancouver Police Department from 2004 to 2020 and 
 ## Analysis
 The LogisticRegressor algorithm was used to classify the different categories of crimes in Vancouver. It performed best out of the models tested, including DummyClassifier, RandomForestClassifier, and RidgeClassifier. The hyperparameters C and class_weight were optimized via RandomizedSearchCV. The best model performed using C = PLACEHOLDER and class_weight = PLACEHOLDER. From the confusion matrix, we can see that the LogisticRegressor model was able to identify PLACEHOLDER on the test data.
 
-```{r confusion-matrix, echo=FALSE, fig.height = 10, fig.width = 3, fig.cap = "Fig 1. Confusion Matrix of LogisticRegressor performance on test data", out.width = "25%"}
+```{r confusion-matrix, echo=FALSE, fig.height = 10, fig.width = 10, fig.cap = "Fig 1. Confusion Matrix of LogisticRegressor performance on test data", out.width = "200%"}
 # here we can print the confusion matrix .
 
-include_graphics('../results/PLACEHOLDER.png')
+include_graphics('../results/confusion_matrix.png')
 
 ```
 
