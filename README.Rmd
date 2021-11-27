@@ -23,15 +23,21 @@ We are going to build a classification prediction model to predict the types of 
 
 To construct a meaningful prediction model, we will address the association between various crime types and areas in Vancouver. We will also study the trends of the number of crimes committed over the years in order to adjust the model with better prediction capability.
 
-## EDA and Analysis
+## Analysis and Prediction
 
-Before we begin the analysis, we split the data into train data(80%) and test data(20%). We performed an initial EDA against the train data. In particular, we summarised the number of crimes committed by locations throughout the years in a table. We also identified the correlation chart of the data features with the crime types. Detailed EDA report that includes other EDA results can be found [here](src/Crime_vancouver_eda.md).
+Firstly, we downloaded the raw data from the Vancouver Police Department, followed by data cleaning and normalization. In particular, we normalized one of the features `HOUR`, that contained extremely high amount of examples at hour 00:00, to spread across 24 hours. Then we split the data into train data(80%) and test data(20%). After that we performed an initial EDA against the train data. For example, we summarised the number of crimes committed by locations throughout the years in a table. We also identified the correlation chart of the data features with the crime types. Detailed EDA report was generated that includes other EDA results. It can be found [here](src/Crime_vancouver_eda.md).
 
-After EDA, we adopt the methodology in supervised machine learning for the prediction. Necessary data transformation is applied based on the reults of initial data analysis. During EDA, we revisit the scoring method to be used, as well as to decide if we are more concerned on False Positive error or False Negative error, which  determines on our identication of the suitable model. Then we examine different machine learning models through techniques of cross validation. Models to be assessed are be Dummy Classifier, Logistic Regression, Random Forest, and Ridge Classifier. To assess the performance of the model, f1 score is used. Hyperparameters are tuned for the model that yields the best f1 score.
+After EDA, we started to adopt the methodology in supervised machine learning for the prediction. Firstly we created a column transformation object, which transformed the data into a format that the models could process. Since our prediction model is a multi-class classification, we fit the data into model of Dummy Classifier, Logistic Regression, Random Forest and Ridge CLassifier. We selected f1 score as our benchmark so that we took a balance between false positive and false negative errors. After fitting all the models, we have selected Logistic Regression as the best performing one and conducted hyperparameters tuning. After that, the best model was created for conducting the prediction and scoring against the test data. Results were collected as confusion matrix and classification report to assess the performance of claissfying each target class.
 
 
-## Reports
-Once the prediction model is completed, we publish the detailed report in HTML and Markdown format. Necessary analysis is published that includes necessary analysis results in the form of table and graphs. The final report can be found [here](doc/vancouver_crime_predict_report.md)
+The following flow chart illustrates the overall steps:
+
+
+<img src="src/flow_chart.png" width="80%" height="80%">
+
+
+## Report
+We publish the detailed report in HTML and Markdown format that includes detained analysis results with support of figures and tables. The final report can be found [here](doc/vancouver_crime_predict_report.md)
 
 ## Usage
 
