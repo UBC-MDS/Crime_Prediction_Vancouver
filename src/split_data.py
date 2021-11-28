@@ -119,11 +119,6 @@ def main(input_path, out_path, graph_path):
     X_test.to_csv(out_path + "/test_feature.csv", index_label="index")
     y_test.to_csv(out_path + "/test_target.csv", index_label="index")
 
-    X_train.to_csv(out_path + "/training_feature.csv", index_label="index")
-    y_train.to_csv(out_path + "/training_target.csv", index_label="index")
-    X_test.to_csv(out_path + "/test_feature.csv", index_label="index")
-    y_test.to_csv(out_path + "/test_target.csv", index_label="index")
-
     #    print(f"Error message: %s" %error)
     #    print("Error while saving training and test data!")
 
