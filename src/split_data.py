@@ -6,12 +6,14 @@
 
 '''This script cleans, normalize and splits the Crime Vancouver data (from https://geodash.vpd.ca/opendata/)
 
-Usage: split_data.py --input_path=<input_path> --out_path=<out_path> --graph_path=<graph_path>
+Usage: split_data.py --input_path=<input_path> --out_path=<out_path> --graph_path=<graph_path> --from_year=<from_year> --to_year=<to_year>
 
 Options:
 --input_path=<input_path>   Path (inclujding filename) to the raw data (.csv file)
 --out_path=<out_path>       Path to directory where the processed data and pre-processor object should be written
 --graph_path=<graph_path>   Path to output the graphs for reasoning of the data balancing
+--from_year=<from_year>     Filter data from this from_year
+--to_year=<to_year>         Filter data up to this to_year
 '''
 import pandas as pd
 import numpy as np
@@ -38,7 +40,7 @@ alt.data_transformers.enable('data_server')
 alt.renderers.enable('mimetype')
 
 
-def main(input_path, out_path, graph_path):
+def main(input_path, out_path, graph_path, from_year, to_year):
     """ Main function that splits the data into train and test.
 
     Parameters
@@ -62,8 +64,11 @@ def main(input_path, out_path, graph_path):
         os.makedirs(os.path.dirname(graph_path))
 
     # Read data from csv and filter the year
+
+    print("")
+    print(f"Split the year between %s and %s" % (from_year, to_year))
     df = pd.read_csv(input_path)
-    df = df.query('2015 < YEAR <= 2020')
+    df = df[(df["YEAR"] >= int(from_year)) & (df["YEAR"] <= int(to_year))]
 
     # Split data into train and test
     train_df, test_df = train_test_split(df, test_size=0.20, random_state=123)
@@ -119,11 +124,6 @@ def main(input_path, out_path, graph_path):
     X_test.to_csv(out_path + "/test_feature.csv", index_label="index")
     y_test.to_csv(out_path + "/test_target.csv", index_label="index")
 
-    X_train.to_csv(out_path + "/training_feature.csv", index_label="index")
-    y_train.to_csv(out_path + "/training_target.csv", index_label="index")
-    X_test.to_csv(out_path + "/test_feature.csv", index_label="index")
-    y_test.to_csv(out_path + "/test_target.csv", index_label="index")
-
     #    print(f"Error message: %s" %error)
     #    print("Error while saving training and test data!")
 
@@ -139,4 +139,5 @@ def main(input_path, out_path, graph_path):
 
 
 if __name__ == "__main__":
-    main(opt['--input_path'], opt['--out_path'], opt['--graph_path'])
+    main(opt['--input_path'], opt['--out_path'],
+         opt['--graph_path'], opt['--from_year'], opt['--to_year'])
