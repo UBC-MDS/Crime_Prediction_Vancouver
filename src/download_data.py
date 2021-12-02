@@ -1,7 +1,7 @@
 # author: Thomas Siu (Group 24)
 # contributors: Ramiro Francisco Mejia, Jasmine Ortega, Shi Yan Wang
 # date: 2021-11-19
-# last updated: 2021-11-27
+# last updated: 2021-12-02
 
 '''This script downloads data from the given url to a local path and perform unzip if needed.
 
@@ -10,7 +10,7 @@ Usage: download_data.py --url=<url> --file_path=<file_path> [--zip_file_name=<zi
 Options:
 --url=<url>   Path of the data set to be downloaded
 --file_path=<file_path>   Path(includes filename if not zip) to the data file store in local
---zip_file_name=<zip_file_name> File name inside the zip file that wants to unzip, in case the source is a zip file (Optional option)
+--zip_file_name=<zip_file_name> File name inside the orignal zip file that requires unzipping, in case the source is a zip file (Optional option)
 '''
 from urllib.request import urlopen
 from zipfile import ZipFile
