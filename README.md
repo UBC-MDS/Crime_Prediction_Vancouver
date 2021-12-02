@@ -31,6 +31,10 @@ at a particular time from 2003 to 2021. Since the data is being updated
 by the VPD every week, we will cut-off the data up to 2020 December to
 ensure our analysis and model are reproducible.
 
+The prediction model will make use of date features (`YEAR`, `MONTH`,
+`DAY`, `HOUR`, `MINUTE`) and location (`HUNDRED_BLOCK`, `NEIGHBOURHOOD`,
+`X`, `Y`) to predict types of crime to be happened in vancouver.
+
 To construct a meaningful prediction model, we will address the
 association between various crime types and areas in Vancouver. We will
 also study the trends of the number of crimes committed over the years
