@@ -14,6 +14,7 @@ import pandas as pd
 import numpy as np
 from docopt import docopt
 import pickle
+import os
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer, make_column_transformer
 from sklearn.pipeline import Pipeline, make_pipeline
@@ -33,6 +34,11 @@ opt = docopt(__doc__)
 
 
 def main(out_path):
+
+    # Create folders if not exists
+
+    if not os.path.exists(out_path):
+        os.makedirs(os.path.dirname(out_path))
 
     drop_features = ["HUNDRED_BLOCK"]
     categorical_feature_n = ["NEIGHBOURHOOD"]

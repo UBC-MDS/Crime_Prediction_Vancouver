@@ -17,6 +17,7 @@ dependencies:
   - python-graphviz
   - pip
   - pytest
+  - pandoc
   - pip:
     - rpy2
     - dataframe-image
