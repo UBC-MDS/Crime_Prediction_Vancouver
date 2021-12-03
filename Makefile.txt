@@ -1,53 +1,3 @@
-<<<<<<< HEAD
-# Makefile
-# contributors: Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang
-# date: 2021-12-1
-# last updated: 2021-12-1
-
-# example usage:
-# make data/raw/crimedata_csv_all_years.csv
-
-all: src/crime_vancouver_eda.md doc/vancouver_crime_predict_report.md
-
-# download the data
-data/raw/crimedata_csv_all_years.csv : src/download_data.py
-    python src/download_data.py --url=https://geodash.vpd.ca/opendata/crimedata_download/crimedata_csv_all_years.zip?disclaimer=on --file_path=data/raw --zip_file_name=crimedata_csv_all_years.csv
-
-# split the data into train and test
-
-data/processed/training_df.csv data/processed/training_feature.csv data/processed/training_target.csv data/processed/test_feature.csv data/processed/test_target.csv \
-src/figure-preprocess/data_before_balance.png src/figure-preprocess/data_after_balance.png src/figure-preprocess/observations.png: data/raw/crimedata_csv_all_years.csv src/split_data.py
-	python src/split_data.py --input_path=data/raw/crimedata_csv_all_years.csv --out_path=data/processed/  --graph_path=src/figure-preprocess/ --from_year=2016 --to_year=2020
-
-
-# perform EDA
-src/figure-eda/neighbour_crimes.png src/figure-eda/crime_type.png src/figure-eda/crime_evolution.png src/figure-eda/crime_correlation.png \
-src/figure-eda/crime_top5.png: data/processed/training_df.csv src/crime_vancouver_eda.py 
-	python src/crime_vancouver_eda.py --input_path=data/processed/training_df.csv --out_dir=src/figure-eda/ 
-
-#render EDA
-src/crime_vancouver_eda.md: src/figure-eda/neighbour_crimes.png src/figure-preprocess/observations.png src/figure-eda/crime_type.png src/figure-eda/crime_evolution.png src/figure-eda/crime_correlation.png src/figure-eda/crime_top5.png src/crime_vancouver_eda.Rmd
-	Rscript -e "rmarkdown::render('src/crime_vancouver_eda.Rmd')"
-
-
-
-clean: 
-	rm -rf data/raw/crimedata_csv_all_years.csv
-    rm -rf data/processed/training_df.csv
-    rm -rf data/processed/training_feature.csv 
-    rm -rf data/processed/training_target.csv 
-    rm -rf data/processed/test_feature.csv 
-    rm -rf data/processed/test_target.csv 
-    rm -rf src/figure-preprocess/data_before_balance.png 
-    rm -rf src/figure-preprocess/data_after_balance.png 
-    rm -rf src/figure-eda/neighbour_crimes.png 
-    rm -rf src/figure-eda/crime_type.png 
-    rm -rf src/figure-eda/crime_evolution.png 
-    rm -rf src/figure-eda/crime_correlation.png 
-    rm -rf src/figure-eda/crime_top5.png
-    rm -rf src/crime_vancouver_eda.md
-    rm -rf data/processed/preprocessor.p 
-=======
 # Makefile
 # contributors: Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang
 # date: 2021-12-1
@@ -82,6 +32,16 @@ src/crime_vancouver_eda.md: src/figure-eda/neighbour_crimes.png src/figure-prepr
 data/processed/preprocessor.p data/processed/models.p: src/pre_process_data.py
 	python src/pre_process_data.py --out_path=data/processed/
 
+# fit and tune the model
+results/models_results_cv.png results/best_LR_model.png results/pipe_best.p results/classification_report.png: data/processed/training_feature.csv data/processed/training_target.csv \
+data/processed/test_feature.csv data/processed/test_target.csv data/processed/models.p data/processed/preprocessor.p src/modelling.py
+    python src/modelling.py --input_path=data/processed/ --out_path=results/
+
+doc/vancouver_crime_predict_report.md: doc/vancouver_crime_predict_report.Rmd doc/references.bib src/figure-eda/crime_correlation.png src/figure-eda/crime_top5.png \
+src/figure-preprocess/data_before_balance.png src/figure-preprocess/data_after_balance.png results/models_results_cv.png results/best_LR_model.png results/confusion_matrix.png \
+results/classification_report.png
+    Rscript -e "rmarkdown::render('doc/vancouver_crime_predict_report.Rmd')"
+
 clean: 
 	rm -rf data/raw/crimedata_csv_all_years.csv
     rm -rf data/processed/training_df.csv
@@ -98,5 +58,9 @@ clean:
     rm -rf src/figure-eda/crime_top5.png
     rm -rf src/crime_vancouver_eda.md
     rm -rf data/processed/preprocessor.p 
->>>>>>> 70417219347ba4fc6e45adf5c8d4ad1179339974
     rm- rf data/processed/models.p
+    rm - rf results/models_results_cv.png 
+    rm - rf results/best_LR_model.png 
+    rm - rf results/pipe_best.p 
+    rm - rf results/classification_report.png
+    rm -rf doc/vancouver_crime_predict_report.md doc/vancouver_crime_predict_report.html
