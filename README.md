@@ -82,22 +82,28 @@ report can be found [here](doc/vancouver_crime_predict_report.md)
 
 ## Usage
 
-To replicate the analysis and run the predictor, download the conda
-environment file to your computer [here](crime_predictor.yaml). Then
-create and activate the conda environment as follows:
+To replicate the analysis and run the predictor, first fork the
+repository to your personal repo and clone to your local environment.
+Then create and activate the conda environment as follows:
 
 ### Conda environment
+
+In the terminal, use the following command:
 
 ``` bash
 conda env create -f crime_predictor.yaml
 conda activate crime_predictor
 ```
 
+The conda environment file is [here](crime_predictor.yaml) for
+reference.
+
 ### R
 
 -   Download the latest version of R at `https://cran.r-project.org`.
     Follow the installer instructions.
--   In case an error was thrown with pandoc error:
+-   In case an error was thrown with pandoc error during the make
+    command in next step:
 
 ``` bash
 Error: pandoc version 1.12.3 or higher is required and was not found (see the help page ?rmarkdown::pandoc_available).
