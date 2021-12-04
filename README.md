@@ -1,7 +1,7 @@
 
 # Crime Prediction in Vancouver
 
--   contributors: Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu,
+-   Contributors: Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu,
     Shi Yan Wang
 
 This is the data analysis project of group 24 (Cohort 6, 2022) for DSCI
@@ -46,7 +46,7 @@ Firstly, we downloaded the raw data from the Vancouver Police
 Department, followed by data cleaning and normalization. In particular,
 we normalized one of the features `HOUR`, that contained extremely high
 amount of examples at hour 00:00, to spread across 24 hours. Then we
-split the data into train data(80%) and test data(20%). After that we
+split the data into train data (80%) and test data (20%). After that we
 performed an initial EDA against the train data. For example, we
 summarised the number of crimes committed by locations throughout the
 years in a table. We also identified the correlation chart of the data
@@ -59,14 +59,14 @@ learning for the prediction. Firstly we created a column transformation
 object, which transformed the data into a format that the models could
 process. Since our prediction model is a multi-class classification, we
 fit the data into model of Dummy Classifier, Logistic Regression, Random
-Forest and Ridge CLassifier. We selected f1 score as our benchmark so
-that we took a balance between false positive and false negative errors.
-After fitting all the models, we have selected Logistic Regression as
-the best performing one and conducted hyperparameters tuning. After
-that, the best model was created for conducting the prediction and
-scoring against the test data. Results were collected as confusion
-matrix and classification report to assess the performance of
-claissfying each target class.
+Forest Classifier and Ridge Classifier. We selected f-1 score as our
+benchmark so that we took a balance between false positive and false
+negative errors. After fitting all the models, we have selected Logistic
+Regression as the best performing one and conducted hyperparameters
+tuning. After that, the best model was created for conducting the
+prediction and scoring against the test data. Results were collected as
+confusion matrix and classification report to assess the performance of
+classifying each target class.
 
 The following flow chart illustrates the overall steps:
 
