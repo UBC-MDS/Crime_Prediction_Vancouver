@@ -49,7 +49,7 @@ results/pipe_best.p \
 results/models_results_cv.png \
 results/best_LR_model.png \
 results/confusion_matrix.png \
-esults/classification_report.png: src/modelling.py \
+results/classification_report.png: src/modelling.py \
 data/processed/training_feature.csv \
 data/processed/training_target.csv \
 data/processed/test_feature.csv \
