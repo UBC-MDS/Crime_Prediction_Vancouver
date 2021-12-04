@@ -95,41 +95,35 @@ conda activate crime_predictor
 
 ### R
 
-Download the latest version of R at `https://cran.r-project.org`. Follow
-the installer instructions.
+-   Download the latest version of R at `https://cran.r-project.org`.
+    Follow the installer instructions.
+-   In case an error was thrown with pandoc error:
+
+``` bash
+Error: pandoc version 1.12.3 or higher is required and was not found (see the help page ?rmarkdown::pandoc_available).
+Execution halted
+```
+
+Add an environment variable `RSTUDIO_PANDOC` in the .bash_profile that
+points to tne pandoc directory. For example:
+`/Applications/RStudio.app/Contents/MacOS/pandoc`
 
 ### Analysis execution
 
 Execute the data analysis pipeline of the `Crime Vancouver` data set by
-running the following command in `terminal`:
+running the following command in `terminal` from the root directory of
+this project:
 
 ``` bash
-sh pipeline.sh
+make all
 ```
 
-Or the following commands in sequence:
+To reset the repository without intermediate or results files, execute
+the following command in `terminal` from the root directory of this
+project:
 
 ``` bash
-# download the data
-python src/download_data.py --url=https://geodash.vpd.ca/opendata/crimedata_download/crimedata_csv_all_years.zip?disclaimer=on --file_path=data/raw --zip_file_name=crimedata_csv_all_years.csv
-
-# split the data into train and test
-python src/split_data.py --input_path=data/raw/crimedata_csv_all_years.csv --out_path=data/processed/  --graph_path=src/figure-preprocess/ --from_year=2016 --to_year=2020
-
-# perform EDA
-python src/crime_vancouver_eda.py --input_path=data/processed/training_df.csv --out_dir=src/figure-eda/
-
-# render EDA report
-Rscript -e "rmarkdown::render('src/crime_vancouver_eda.Rmd')"
-
-# create pre-processor for column transformation
-python src/pre_process_data.py --out_path=data/processed/
-
-# fit and tune the model
-python src/modelling.py --input_path=data/processed/ --out_path=results/
-
-# render final report
-Rscript -e "rmarkdown::render('doc/vancouver_crime_predict_report.Rmd')"
+make clean
 ```
 
 ## Dependencies
@@ -155,6 +149,8 @@ are the dependencies of the libraries:
 -   R version 4.1.1 and R packages:
     -   knitr
     -   tidyverse
+-   Other packages:
+    -   pandoc
 
 ### Mac M1 specific considerations
 
