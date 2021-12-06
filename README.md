@@ -1,7 +1,7 @@
 
 # Crime Prediction in Vancouver
 
--   contributors: Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu,
+-   Contributors: Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu,
     Shi Yan Wang
 
 This is the data analysis project of group 24 (Cohort 6, 2022) for DSCI
@@ -46,7 +46,7 @@ Firstly, we downloaded the raw data from the Vancouver Police
 Department, followed by data cleaning and normalization. In particular,
 we normalized one of the features `HOUR`, that contained extremely high
 amount of examples at hour 00:00, to spread across 24 hours. Then we
-split the data into train data(80%) and test data(20%). After that we
+split the data into train data (80%) and test data (20%). After that we
 performed an initial EDA against the train data. For example, we
 summarised the number of crimes committed by locations throughout the
 years in a table. We also identified the correlation chart of the data
@@ -59,14 +59,14 @@ learning for the prediction. Firstly we created a column transformation
 object, which transformed the data into a format that the models could
 process. Since our prediction model is a multi-class classification, we
 fit the data into model of Dummy Classifier, Logistic Regression, Random
-Forest and Ridge CLassifier. We selected f1 score as our benchmark so
-that we took a balance between false positive and false negative errors.
-After fitting all the models, we have selected Logistic Regression as
-the best performing one and conducted hyperparameters tuning. After
-that, the best model was created for conducting the prediction and
-scoring against the test data. Results were collected as confusion
-matrix and classification report to assess the performance of
-claissfying each target class.
+Forest Classifier and Ridge Classifier. We selected f-1 score as our
+benchmark so that we took a balance between false positive and false
+negative errors. After fitting all the models, we have selected Logistic
+Regression as the best performing one and conducted hyperparameters
+tuning. After that, the best model was created for conducting the
+prediction and scoring against the test data. Results were collected as
+confusion matrix and classification report to assess the performance of
+classifying each target class.
 
 The following flow chart illustrates the overall steps:
 
@@ -82,54 +82,54 @@ report can be found [here](doc/vancouver_crime_predict_report.md)
 
 ## Usage
 
-To replicate the analysis and run the predictor, download the conda
-environment file to your computer [here](crime_predictor.yaml). Then
-create and activate the conda environment as follows:
+To replicate the analysis and run the predictor, first fork the
+repository to your personal repo and clone to your local environment.
+Then create and activate the conda environment as follows:
 
 ### Conda environment
+
+In the terminal, use the following command:
 
 ``` bash
 conda env create -f crime_predictor.yaml
 conda activate crime_predictor
 ```
 
+The conda environment file is [here](crime_predictor.yaml) for
+reference.
+
 ### R
 
-Download the latest version of R at `https://cran.r-project.org`. Follow
-the installer instructions.
+-   Download the latest version of R at `https://cran.r-project.org`.
+    Follow the installer instructions.
+-   In case an error was thrown with pandoc error during the make
+    command in next step:
+
+``` bash
+Error: pandoc version 1.12.3 or higher is required and was not found (see the help page ?rmarkdown::pandoc_available).
+Execution halted
+```
+
+Add an environment variable `RSTUDIO_PANDOC` in the .bash_profile that
+points to tne pandoc directory. For example:
+`/Applications/RStudio.app/Contents/MacOS/pandoc`
 
 ### Analysis execution
 
 Execute the data analysis pipeline of the `Crime Vancouver` data set by
-running the following command in `terminal`:
+running the following command in `terminal` from the root directory of
+this project:
 
 ``` bash
-sh pipeline.sh
+make all
 ```
 
-Or the following commands in sequence:
+To reset the repository without intermediate or results files, execute
+the following command in `terminal` from the root directory of this
+project:
 
 ``` bash
-# download the data
-python src/download_data.py --url=https://geodash.vpd.ca/opendata/crimedata_download/crimedata_csv_all_years.zip?disclaimer=on --file_path=data/raw --zip_file_name=crimedata_csv_all_years.csv
-
-# split the data into train and test
-python src/split_data.py --input_path=data/raw/crimedata_csv_all_years.csv --out_path=data/processed/  --graph_path=src/figure-preprocess/ --from_year=2016 --to_year=2020
-
-# perform EDA
-python src/crime_vancouver_eda.py --input_path=data/processed/training_df.csv --out_dir=src/figure-eda/
-
-# render EDA report
-Rscript -e "rmarkdown::render('src/crime_vancouver_eda.Rmd')"
-
-# create pre-processor for column transformation
-python src/pre_process_data.py --out_path=data/processed/
-
-# fit and tune the model
-python src/modelling.py --input_path=data/processed/ --out_path=results/
-
-# render final report
-Rscript -e "rmarkdown::render('doc/vancouver_crime_predict_report.Rmd')"
+make clean
 ```
 
 ## Dependencies
@@ -155,6 +155,8 @@ are the dependencies of the libraries:
 -   R version 4.1.1 and R packages:
     -   knitr
     -   tidyverse
+-   Other packages:
+    -   pandoc
 
 ### Mac M1 specific considerations
 

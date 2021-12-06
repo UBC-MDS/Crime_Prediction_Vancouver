@@ -5,12 +5,12 @@
 
 '''This script downloads data from the given url to a local path and perform unzip if needed.
 
-Usage: download_data.py --url=<url> --file_path=<file_path> [--zip_file_name=<zip_file_name>]
+Usage: download_data.py --url=<url> --file_path=<file_path> --zip_file_name=<zip_file_name>
 
 Options:
 --url=<url>   Path of the data set to be downloaded
 --file_path=<file_path>   Path(includes filename if not zip) to the data file store in local
---zip_file_name=<zip_file_name> File name inside the orignal zip file that requires unzipping, in case the source is a zip file (Optional option)
+--zip_file_name=<zip_file_name> File name inside the orignal zip file that requires unzipping
 '''
 from urllib.request import urlopen
 from zipfile import ZipFile
@@ -51,7 +51,7 @@ def download_and_unzip(url, file_path, zip_file_name):
     return
 
 
-def main(url, file_path, zip_file_name=None):
+def main(url, file_path, zip_file_name):
 
     if zip_file_name is not None:
         download_and_unzip(url, file_path, zip_file_name)
