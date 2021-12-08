@@ -9,7 +9,7 @@ RUN apt-get update --yes && \
     fonts-dejavu \
     make
 
-# add conda-forge channel
+# add conda-forge channel 
 RUN conda config --add channels conda-forge
 
 # install mamba for package installations
