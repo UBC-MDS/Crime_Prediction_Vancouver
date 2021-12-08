@@ -114,7 +114,8 @@ Add an environment variable `RSTUDIO_PANDOC` in the .bash_profile that
 points to tne pandoc directory. For example:
 `/Applications/RStudio.app/Contents/MacOS/pandoc`
 
-Alternatively, use install `pandoc` in your system using  the command `conda install pandoc`
+Alternatively, use install `pandoc` in your system using the command
+`conda install pandoc`
 
 ### Analysis execution
 
@@ -159,6 +160,11 @@ are the dependencies of the libraries:
     -   tidyverse
 -   Other packages:
     -   pandoc
+
+### Dependecy Diagram of Makefile
+
+-   For reference a dependency diagram can be found
+    [here](Makefile.png).
 
 ### Mac M1 specific considerations
 
