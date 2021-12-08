@@ -16,7 +16,7 @@ RUN conda config --add channels conda-forge
 RUN conda install mamba -n base -c conda-forge -y
 
 # mamba installation for python packages
-RUN mamba install --quiet --yes \
+RUN mamba install --quiet --yes \ 
     'pandas' \
     'docopt' \
     'altair_saver=0.5.*' \
