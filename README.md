@@ -163,7 +163,7 @@ are the dependencies of the libraries:
 
 ### Dependecy Diagram of Makefile
 
--   For reference a dependency diagram can be found
+-   A dependency diagram of the Makefile can be found
     [here](Makefile.png).
 
 ### Mac M1 specific considerations
