@@ -4,7 +4,7 @@
 # authors: Thomas Siu, Ramiro Francisco Mejia, Jasmine Ortega, Shi Yan Wang
 # last update: 9-Dec-2021
 
-# Introduction: The docker runs the prediction of crimes in vancouver
+# Introduction: The docker runs the prediction of crimes in vancouver 
 # Note: For Mac M1 users two separate dockers are required. See README for details
 # Usage:
 # - Operating systems except Mac M1:
