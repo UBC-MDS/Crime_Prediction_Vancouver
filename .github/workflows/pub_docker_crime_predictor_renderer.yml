@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths: 
-      - 'Dockerfile'
+      - 'docker-predictor-render/Dockerfile'
 jobs:
   build:
     runs-on: ubuntu-latest
