@@ -56,7 +56,7 @@ RUN set -x && \
     fi;
 
 # extra python packages for rendering images from Pandas table
-RUN pip3 install \
+RUN pip3 install \ 
     'dataframe_image==0.1.1' \
     'lxml'
 
