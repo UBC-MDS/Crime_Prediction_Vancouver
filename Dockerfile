@@ -1,44 +1,64 @@
-FROM continuumio/miniconda3
+# Copyright (c) 2021  Thomas Siu, Ramiro Francisco Mejia, Jasmine Ortega, Shi Yan Wang
+# Distributed under the terms of the MIT License.
 
-# set the working directory of the docker environment
-WORKDIR /home/crime_predictor
+# authors: Thomas Siu, Ramiro Francisco Mejia, Jasmine Ortega, Shi Yan Wang
+# last update: 9-Dec-2021
 
-# essential components for docker environment
+# Introduction: The docker runs the prediction of crimes in vancouver
+# Note: For Mac M1 users two separate dockers are required. See README for details
+# Usage:
+# - Operating systems except Mac M1:
+#    docker build -t crime_predictor .
+# - Mac M1:
+#    docker build --platform linux/amd64 -t crime_predictor .
+
+# Base image adopted from Jupyter Development Team:
+# Copyright (c) Jupyter Development Team.
+# Distributed under the terms of the Modified BSD License.
+ARG OWNER=jupyter
+ARG BASE_CONTAINER=$OWNER/scipy-notebook:latest
+FROM $BASE_CONTAINER
+
+USER root
+
+# install pre-requisits for the base environment
 RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
-    fonts-dejavu \
-    make
+    fonts-dejavu && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# add conda-forge channel
-RUN conda config --add channels conda-forge
 
-# install mamba for package installations
-RUN conda install mamba -n base -c conda-forge -y
+USER ${NB_UID}
 
-# mamba installation for python packages
+# mamba installation for extra python and R packages
 RUN mamba install --quiet --yes \
-    'pandas' \
-    'docopt' \
+    'docopt=0.6.*' \
+    'r-base=4.1.*' \
+    'r-ggthemes' \
+    'r-ggridges' \    
     'altair_saver=0.5.*' \
-    'scikit-learn=1.0.*'   \    
-    'r-base=4.1.*'  \
+    'nodejs=14.17.*' \    
+    'rpy2' && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+# further R packages installation for non M1 Mac users
+RUN set -x && \
+    arch=$(uname -m) && \
+    if [ "${arch}" == "x86_64" ]; then \
+    mamba install --quiet --yes \
     'r-rmarkdown' \
-    'nodejs=14.17.*' && \
-    #   'pandoc=1.19.*'
-    #   'rpy2' && \
-    mamba clean --all -f -y
+    'r-tidyverse' && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"; \
+    fi;
 
-# extra installation for python packages using conda
-RUN conda install -c conda-forge -y \
-    'altair_saver=0.5.*'
-
-# extra installation for python packages using pip
+# extra python packages for rendering images from Pandas table
 RUN pip3 install \
     'dataframe_image==0.1.1' \
-    'lxml==4.6.*' 
+    'lxml'
 
-#RUN Rscript -e "install.packages('rmarkdown', dependencies=TRUE, repos='http://cran.r-project.org')"
-
-#RUN apt-get update --yes && \
-#    apt-get install --yes --no-install-recommends \
-#   r-base \
+# set the working directory of the docker environment
+WORKDIR "${HOME}"
