@@ -58,7 +58,7 @@ RUN set -x && \
 # extra python packages for rendering images from Pandas table
 RUN pip3 install \ 
     'dataframe_image==0.1.1' \
-    'lxml'
+    'lxml' 
 
 # set the working directory of the docker environment
 WORKDIR "${HOME}"
