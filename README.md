@@ -113,7 +113,7 @@ crime_predictor make clean
 
 ``` bash
 docker run –rm -p 8888:8888 -v
-“/Users/thomas/Documents/UBC/Assignments/DSCI_522_Group24/”:/home/jovyan/work
+<your project directory>:/home/jovyan/work
 crime_predictor
 ```
 
@@ -123,7 +123,7 @@ crime_predictor
 
 ``` bash
 docker run –rm -it –platform linux/amd64 -v
-“/Users/thomas/Documents/UBC/Assignments/DSCI_522_Group24”:/home/jovyan/work
+<your project directory>:/home/jovyan/work
 crime_predictor make analysis
 ```
 
@@ -131,7 +131,7 @@ crime_predictor make analysis
 
 ``` bash
 docker run –rm -it -v
-“/Users/thomas/Documents/UBC/Assignments/DSCI_522_Group24”:/home/crime_predictor
+<your project directory>:/home/crime_predictor
 crime_predictor_renderer make report
 ```
 
@@ -139,7 +139,7 @@ crime_predictor_renderer make report
 
 ``` bash
 docker run –rm -it –platform linux/amd64 -v
-“/Users/thomas/Documents/UBC/Assignments/DSCI_522_Group24”:/home/jovyan/work
+<your project directory>:/home/jovyan/work
 crime_predictor make clean
 ```
 
@@ -147,7 +147,7 @@ crime_predictor make clean
 
 ``` bash
 docker run –rm -p 8888:8888 –platform linux/amd64 -v
-“/Users/thomas/Documents/UBC/Assignments/DSCI_522_Group24/”:/home/jovyan/work
+<your project directory>:/home/jovyan/work
 crime_predictor
 ```
 
