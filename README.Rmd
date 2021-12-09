@@ -44,11 +44,80 @@ We publish the detailed report in HTML and Markdown format that includes detaine
 
 ## Usage
 
-To replicate the analysis and run the predictor, first fork the repository to your personal repo and clone to your local environment. Then create and activate the conda environment as follows:
+To replicate the analysis and run the predictor, first fork the
+repository to your personal repo and clone to your local environment.
+Then perform either of the instructions below
+
+### Docker
+
+**Note:** As there is known issues in compatibility of Mac M1 running
+dockers, two separate instructions are given.
+
+**All users except Mac M1**:
+
+<u>**Run analysis and render report**</u>
+
+```bash
+docker run –rm -it -v
+<your project directory>:/home/jovyan/work
+crime_predictor make all
+```
+
+<u>**Clean all files**</u>
+
+```bash
+docker run –rm -it -v
+<your project directory>:/home/jovyan/work
+crime_predictor make clean
+```
+
+<u>**Run jupyter lab**</u>
+
+```bash
+docker run –rm -p 8888:8888 -v
+“/Users/thomas/Documents/UBC/Assignments/DSCI_522_Group24/”:/home/jovyan/work
+crime_predictor
+```
+
+**Mac M1**:
+
+<u>**Conduct EDA analysis**</u>
+
+```bash
+docker run –rm -it –platform linux/amd64 -v
+“/Users/thomas/Documents/UBC/Assignments/DSCI_522_Group24”:/home/jovyan/work
+crime_predictor make analysis
+```
+
+<u>**To render report**</u>
+
+```bash
+docker run –rm -it -v
+“/Users/thomas/Documents/UBC/Assignments/DSCI_522_Group24”:/home/crime_predictor
+crime_predictor_renderer make report
+```
+
+<u>**Clean all files**</u>
+
+```bash
+docker run –rm -it –platform linux/amd64 -v
+“/Users/thomas/Documents/UBC/Assignments/DSCI_522_Group24”:/home/jovyan/work
+crime_predictor make clean
+```
+
+<u>**Run jupyter lab**</u>
+
+```bash
+docker run –rm -p 8888:8888 –platform linux/amd64 -v
+“/Users/thomas/Documents/UBC/Assignments/DSCI_522_Group24/”:/home/jovyan/work
+crime_predictor
+```
+
+<br> </br>
 
 ### Conda environment
 
-In the terminal, use the following command:
+In case of running without docker, use the following command:
 
 ```bash
 conda env create -f crime_predictor.yaml

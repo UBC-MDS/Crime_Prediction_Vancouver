@@ -1,11 +1,19 @@
 # crime predictor vancouver make file
 # contributors: Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang
 # date: 2021-12-03
-# last updated: 2021-12-1
+# last updated: 2021-12-9
 
 # Usage: make all
 # Creates the EDA report and final analysis report through checking all dependencies
 all: src/crime_vancouver_eda.md doc/vancouver_crime_predict_report.md
+
+# Usage: make analysis
+# Runs the analysis except rendering the report
+analysis: data/processed/test_target.csv src/figure-eda/crime_top5.png results/pipe_best.p
+
+# Usage: make report
+# Renders the EDA report and final report
+report: src/crime_vancouver_eda.md doc/vancouver_crime_predict_report.md
 
 # Usage: make data/raw/crimedata_csv_all_years.csv
 # Downloads the necessary crime data from Vancouver Police Department and extract the zip file
