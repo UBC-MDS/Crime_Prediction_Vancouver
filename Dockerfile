@@ -61,4 +61,4 @@ RUN pip3 install \
     'lxml' 
 
 # set the working directory of the docker environment
-WORKDIR "${HOME}"
+WORKDIR "/home/jovyan/work"
