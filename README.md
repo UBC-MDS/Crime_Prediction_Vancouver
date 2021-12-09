@@ -96,19 +96,19 @@ dockers, two separate instructions are given.
 <u>**Run analysis and render report**</u>
 
 ``` bash
-docker run –rm -it -v <your project directory>:/home/jovyan/work hktomy/crime_predictor make all
+docker run -–rm -it -v <your project directory>:/home/jovyan/work crime_predictor make all
 ```
 
 <u>**Clean all files**</u>
 
 ``` bash
-docker run –rm -it -v <your project directory>:/home/jovyan/work hktomy/crime_predictor make clean
+docker run -–rm -it -v <your project directory>:/home/jovyan/work crime_predictor make clean
 ```
 
 <u>**Run jupyter lab**</u>
 
 ``` bash
-docker run –rm -p 8888:8888 -v <your project directory>:/home/jovyan/work hktomy/crime_predictor
+docker run -–rm -p 8888:8888 -v <your project directory>:/home/jovyan/work crime_predictor
 ```
 
 **Mac M1**:
@@ -116,25 +116,25 @@ docker run –rm -p 8888:8888 -v <your project directory>:/home/jovyan/work hkto
 <u>**Conduct EDA analysis**</u>
 
 ``` bash
-docker run –rm -it –platform linux/amd64 -v <your project directory>:/home/jovyan/work hktomy/crime_predictor make analysis
+docker run -–rm -it –platform linux/amd64 -v <your project directory>:/home/jovyan/work crime_predictor make analysis
 ```
 
 <u>**To render report**</u>
 
 ``` bash
-docker run –rm -it -v <your project directory>:/home/crime_predictor hktomy/crime_predictor_renderer make report
+docker run -–rm -it -v <your project directory>:/home/crime_predictor crime_predictor_renderer make report
 ```
 
 <u>**Clean all files**</u>
 
 ``` bash
-docker run –rm -it –platform linux/amd64 -v <your project directory>:/home/jovyan/work hktomy/crime_predictor make clean
+docker run -–rm -it –platform linux/amd64 -v <your project directory>:/home/jovyan/work crime_predictor make clean
 ```
 
 <u>**Run jupyter lab**</u>
 
 ``` bash
-docker run –rm -p 8888:8888 –platform linux/amd64 -v <your project directory>:/home/jovyan/work hktomy/crime_predictor
+docker run -–rm -p 8888:8888 –platform linux/amd64 -v <your project directory>:/home/jovyan/work crime_predictor
 ```
 
 <br> </br>
