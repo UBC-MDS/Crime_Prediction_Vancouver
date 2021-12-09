@@ -78,13 +78,13 @@ Figure 1. Flow chart of the analysis process
 
 We publish the detailed report in HTML and Markdown format that includes
 detained analysis results with support of figures and tables. The final
-report can be found [here](doc/vancouver_crime_predict_report.md)
+report can be found [here](doc/vancouver_crime_predict_report.md).
 
 ## Usage
 
 To replicate the analysis and run the predictor, first fork the
 repository to your personal repo and clone to your local environment.
-Then perform either of the instructions below
+Then perform either of the instructions below:
 
 ### Docker
 
@@ -96,25 +96,19 @@ dockers, two separate instructions are given.
 <u>**Run analysis and render report**</u>
 
 ``` bash
-docker run –rm -it -v
-<your project directory>:/home/jovyan/work
-crime_predictor make all
+docker run –rm -it -v <your project directory>:/home/jovyan/work crime_predictor make all
 ```
 
 <u>**Clean all files**</u>
 
 ``` bash
-docker run –rm -it -v
-<your project directory>:/home/jovyan/work
-crime_predictor make clean
+docker run –rm -it -v <your project directory>:/home/jovyan/work crime_predictor make clean
 ```
 
 <u>**Run jupyter lab**</u>
 
 ``` bash
-docker run –rm -p 8888:8888 -v
-<your project directory>:/home/jovyan/work
-crime_predictor
+docker run –rm -p 8888:8888 -v <your project directory>:/home/jovyan/work crime_predictor
 ```
 
 **Mac M1**:
@@ -122,33 +116,25 @@ crime_predictor
 <u>**Conduct EDA analysis**</u>
 
 ``` bash
-docker run –rm -it –platform linux/amd64 -v
-<your project directory>:/home/jovyan/work
-crime_predictor make analysis
+docker run –rm -it –platform linux/amd64 -v <your project directory>:/home/jovyan/work crime_predictor make analysis
 ```
 
 <u>**To render report**</u>
 
 ``` bash
-docker run –rm -it -v
-<your project directory>:/home/crime_predictor
-crime_predictor_renderer make report
+docker run –rm -it -v <your project directory>:/home/crime_predictor crime_predictor_renderer make report
 ```
 
 <u>**Clean all files**</u>
 
 ``` bash
-docker run –rm -it –platform linux/amd64 -v
-<your project directory>:/home/jovyan/work
-crime_predictor make clean
+docker run –rm -it –platform linux/amd64 -v <your project directory>:/home/jovyan/work crime_predictor make clean
 ```
 
 <u>**Run jupyter lab**</u>
 
 ``` bash
-docker run –rm -p 8888:8888 –platform linux/amd64 -v
-<your project directory>:/home/jovyan/work
-crime_predictor
+docker run –rm -p 8888:8888 –platform linux/amd64 -v <your project directory>:/home/jovyan/work crime_predictor
 ```
 
 <br> </br>
