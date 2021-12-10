@@ -15,7 +15,7 @@ FROM continuumio/miniconda3:4.10.3
 WORKDIR /home/crime_predictor
 
 # essential components for docker environment
-RUN apt-get update --yes && \
+RUN apt-get update --yes && \ 
     apt-get install --yes --no-install-recommends \
     fonts-dejavu \
     make
