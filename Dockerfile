@@ -16,7 +16,7 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 ARG OWNER=jupyter
-ARG BASE_CONTAINER=$OWNER/scipy-notebook:latest
+ARG BASE_CONTAINER=$OWNER/scipy-notebook:hub-1.5.0
 FROM $BASE_CONTAINER
 
 USER root
