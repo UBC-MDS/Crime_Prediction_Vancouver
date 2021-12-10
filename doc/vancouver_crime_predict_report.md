@@ -1,7 +1,7 @@
 Vancouver Crime Prediction Report
 ================
 Ramiro Francisco Mejia, Jasmine Ortega, Thomas Siu, Shi Yan Wang </br>
-2021-12-03
+2021-12-09
 
 -   [Summary](#summary)
 -   [Introduction](#introduction)
@@ -116,9 +116,9 @@ Figure 4. The data after rebalancing
 
 Prior to model fitting, the data was preprocessed via column
 transformers. SimpleImputer and OneHotEncoder were applied to the
-categorical feature, “Neighbourhood”. OneHotEncoding was used for the
-date components, “Year”, “Month”, “Hour” and “Minute”. And finally,
-SimpleImputer and StandardScaler were applied to “X”and “Y”, which are
+categorical feature, “Neighbourhood.” OneHotEncoding was used for the
+date components, “Year,” “Month,” “Hour” and “Minute.” And finally,
+SimpleImputer and StandardScaler were applied to “X”and “Y,” which are
 coordinate points of the crime location.
 
 ### Finding the best performing model
