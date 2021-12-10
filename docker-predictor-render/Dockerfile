@@ -27,7 +27,7 @@ RUN conda config --add channels conda-forge
 RUN conda install mamba -n base -c conda-forge -y
 
 # mamba installation for python packages
-RUN mamba install --quiet --yes \
+RUN mamba install --quiet --yes \ 
     'docopt=0.6.*' \
     'r-base=4.1.*'  \
     'r-rmarkdown' && \
