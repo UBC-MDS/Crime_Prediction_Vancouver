@@ -23,13 +23,13 @@ the prediction to adjust related policies.
 We are going to build a classification prediction model to predict the
 types of crimes that happens in Vancouver, based on the location and the
 time of the day. The data set that is used in the project is originated
-from The Vancouver Police Department (VPD) (The Vancouver Police
-Department 2021), with the data set called `GEODASH OPEN DATA`. The data
-can be found [here](https://geodash.vpd.ca/opendata/). The data set
-represents the types of crime reported in different areas of Vancouver
-at a particular time from 2003 to 2021. Since the data is being updated
-by the VPD every week, we will cut-off the data up to 2020 December to
-ensure our analysis and model are reproducible.
+from The Vancouver Police Department (VPD) \[@Data\], with the data set
+called `GEODASH OPEN DATA`. The data can be found
+[here](https://geodash.vpd.ca/opendata/). The data set represents the
+types of crime reported in different areas of Vancouver at a particular
+time from 2003 to 2021. Since the data is being updated by the VPD every
+week, we will cut-off the data up to 2020 December to ensure our
+analysis and model are reproducible.
 
 The prediction model will make use of date features (`YEAR`, `MONTH`,
 `DAY`, `HOUR`, `MINUTE`) and location (`HUNDRED_BLOCK`, `NEIGHBOURHOOD`,
@@ -72,7 +72,7 @@ The following flow chart illustrates the overall steps:
 
 Figure 1. Flow chart of the analysis process
 
-<img src="src/flow-chart/flow_chart.png" width="80%" height="80%">
+<img src="src/flow-chart/flow_chart.png" width="80%" height="80%"/>
 
 ## Report
 
@@ -91,8 +91,8 @@ Then perform either of the instructions below:
 **Note for Mac M1 users:** There are known compatibility issues running
 dockers on Mac M1. User can run with the usual command by increasing
 resources in the Docker Desktop. However it severely impacts the
-machine’s performance. To run, add an argument –platform linux/amd64 for
-the docker run commands.
+machine’s performance. To run, add an argument `--platform linux/amd64`
+for the docker run commands.
 
 <u>**Run analysis and render report**</u>
 
@@ -167,6 +167,7 @@ In case of replicating the analysis without using `conda`, the following
 are the dependencies of the libraries:
 
 -   Python 3.9 and Python packages:
+
     -   docopt=0.6.2
     -   ipykernal
     -   ipython=7.29.0
@@ -179,10 +180,14 @@ are the dependencies of the libraries:
     -   pip
     -   rpy2
     -   dataframe-image
+
 -   R version 4.1.1 and R packages:
+
     -   knitr
     -   tidyverse
+
 -   Other packages:
+
     -   pandoc
 
 ### Dependecy Diagram of Makefile
@@ -203,14 +208,3 @@ Refer to [here](data/raw/legal_disclaimer.txt) for the legal disclaimer
 of using the data set.
 
 ## References
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-
-<div id="ref-Data" class="csl-entry">
-
-The Vancouver Police Department. 2021. *Vancouver Department Open Data*.
-<https://geodash.vpd.ca/opendata/>.
-
-</div>
-
-</div>
