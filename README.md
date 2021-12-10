@@ -88,10 +88,11 @@ Then perform either of the instructions below:
 
 ### Docker
 
-**Note:** As there are known compatibility issues of Mac M1 running
-dockers, two separate instructions are given.
-
-**All users except Mac M1**:
+**Note for Mac M1 users:** There are known compatibility issues running
+dockers on Mac M1. User can run the usual docker command with increased
+resources in Docker Desktop. However it severely impacts the machine’s
+performance. To run, add an argument –platform linux/amd64 for the
+docker run commands.
 
 <u>**Run analysis and render report**</u>
 
@@ -110,34 +111,6 @@ docker run --rm -it -v $(PWD):/home/jovyan/work hktomy/crime_predictor:latest ma
 ``` bash
 docker run --rm -p 8888:8888 -v $(PWD):/home/jovyan/work hktomy/crime_predictor:latest
 ```
-
-**Mac M1**:
-
-<u>**Conduct EDA analysis**</u>
-
-``` bash
-docker run --rm -it --platform linux/amd64 -v $(PWD):/home/jovyan/work hktomy/crime_predictor:latest make analysis
-```
-
-<u>**To render report**</u>
-
-``` bash
-docker run --rm -it -v $(PWD):/home/crime_predictor hktomy/crime_predictor_renderer:latest make report
-```
-
-<u>**Clean all files**</u>
-
-``` bash
-docker run --m -it --platform linux/amd64 -v $(PWD):/home/jovyan/work hktomy/crime_predictor:latest make clean
-```
-
-<u>**Run jupyter lab**</u>
-
-``` bash
-docker run --rm -p 8888:8888 --platform linux/amd64 -v $(PWD):/home/jovyan/work hktomy/crime_predictor:latest
-```
-
-<br> </br>
 
 ### Conda environment
 
