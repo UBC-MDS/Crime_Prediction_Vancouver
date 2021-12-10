@@ -19,7 +19,7 @@ ARG OWNER=jupyter
 ARG BASE_CONTAINER=$OWNER/scipy-notebook:hub-1.5.0
 FROM $BASE_CONTAINER
 
-USER root
+USER root 
 
 # install pre-requisits for the base environment
 RUN apt-get update --yes && \
