@@ -9,7 +9,7 @@
 #    docker build -t crime_predictor_renderer .
 
 # The docker file is build based on the base image from continuumio/miniconda3 
-FROM continuumio/miniconda3 
+FROM continuumio/miniconda3:4.10.3
 
 # set the working directory of the docker environment
 WORKDIR /home/crime_predictor

@@ -72,7 +72,7 @@ The following flow chart illustrates the overall steps:
 
 Figure 1. Flow chart of the analysis process
 
-<img src="src/flow_chart.png" width="80%" height="80%">
+<img src="src/flow-chart/flow_chart.png" width="80%" height="80%">
 
 ## Report
 
@@ -88,7 +88,7 @@ Then perform either of the instructions below:
 
 ### Docker
 
-**Note:** As there is known issues in compatibility of Mac M1 running
+**Note:** As there are known compatibility issues of Mac M1 running
 dockers, two separate instructions are given.
 
 **All users except Mac M1**:
@@ -96,19 +96,19 @@ dockers, two separate instructions are given.
 <u>**Run analysis and render report**</u>
 
 ``` bash
-docker run -–rm -it -v <your project directory>:/home/jovyan/work hktomy/crime_predictor make all
+docker run --rm -it -v $(PWD):/home/jovyan/work hktomy/crime_predictor:latest make all
 ```
 
 <u>**Clean all files**</u>
 
 ``` bash
-docker run -–rm -it -v <your project directory>:/home/jovyan/work hktomy/crime_predictor make clean
+docker run --rm -it -v $(PWD):/home/jovyan/work hktomy/crime_predictor:latest make clean
 ```
 
 <u>**Run jupyter lab**</u>
 
 ``` bash
-docker run -–rm -p 8888:8888 -v <your project directory>:/home/jovyan/work hktomy/crime_predictor
+docker run --rm -p 8888:8888 -v $(PWD):/home/jovyan/work hktomy/crime_predictor:latest
 ```
 
 **Mac M1**:
@@ -116,25 +116,25 @@ docker run -–rm -p 8888:8888 -v <your project directory>:/home/jovyan/work hkt
 <u>**Conduct EDA analysis**</u>
 
 ``` bash
-docker run -–rm -it –platform linux/amd64 -v <your project directory>:/home/jovyan/work hktomy/crime_predictor make analysis
+docker run --rm -it --platform linux/amd64 -v $(PWD):/home/jovyan/work hktomy/crime_predictor:latest make analysis
 ```
 
 <u>**To render report**</u>
 
 ``` bash
-docker run -–rm -it -v <your project directory>:/home/crime_predictor hktomy/crime_predictor_renderer make report
+docker run --rm -it -v $(PWD):/home/crime_predictor hktomy/crime_predictor_renderer:latest make report
 ```
 
 <u>**Clean all files**</u>
 
 ``` bash
-docker run -–rm -it –platform linux/amd64 -v <your project directory>:/home/jovyan/work hktomy/crime_predictor make clean
+docker run --m -it --platform linux/amd64 -v $(PWD):/home/jovyan/work hktomy/crime_predictor:latest make clean
 ```
 
 <u>**Run jupyter lab**</u>
 
 ``` bash
-docker run -–rm -p 8888:8888 –platform linux/amd64 -v <your project directory>:/home/jovyan/work hktomy/crime_predictor
+docker run --rm -p 8888:8888 --platform linux/amd64 -v $(PWD):/home/jovyan/work hktomy/crime_predictor:latest
 ```
 
 <br> </br>
@@ -203,8 +203,6 @@ are the dependencies of the libraries:
     -   request>=2.24.0
     -   scikit-learn>=1.0
     -   pandas>=1.3.\*
-    -   graphviz
-    -   python-graphviz
     -   pip
     -   rpy2
     -   dataframe-image
@@ -217,7 +215,7 @@ are the dependencies of the libraries:
 ### Dependecy Diagram of Makefile
 
 -   A dependency diagram of the Makefile can be found
-    [here](Makefile.png).
+    [here](src/figure-makefile/Makefile.png).
 
 ### Mac M1 specific considerations
 
