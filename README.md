@@ -89,10 +89,10 @@ Then perform either of the instructions below:
 ### Docker
 
 **Note for Mac M1 users:** There are known compatibility issues running
-dockers on Mac M1. User can run the usual docker command with increased
-resources in Docker Desktop. However it severely impacts the machine’s
-performance. To run, add an argument –platform linux/amd64 for the
-docker run commands.
+dockers on Mac M1. User can run with the usual command by increasing
+resources in the Docker Desktop. However it severely impacts the
+machine’s performance. To run, add an argument –platform linux/amd64 for
+the docker run commands.
 
 <u>**Run analysis and render report**</u>
 
