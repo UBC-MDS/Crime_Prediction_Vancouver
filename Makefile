@@ -39,8 +39,8 @@ src/figure-eda/neighbour_crimes.png \
 src/figure-eda/crime_type.png \
 src/figure-eda/crime_evolution.png \
 src/figure-eda/crime_correlation.png \
-src/figure-eda/crime_top5.png: src/crime_vancouver_eda.py data/processed/training_df.csv
-	python src/crime_vancouver_eda.py --input_path=data/processed/training_df.csv --out_dir=src/figure-eda/ 
+src/figure-eda/crime_top5.png: src/eda_script.py data/processed/training_df.csv
+	python src/eda_script.py --input_path=data/processed/training_df.csv --out_dir=src/figure-eda/ 
 
 # Usage: make src/crime_vancouver_eda.md
 # Render EDA report
