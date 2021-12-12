@@ -192,8 +192,11 @@ are the dependencies of the libraries:
 
 ### Dependecy Diagram of Makefile
 
--   A dependency diagram of the Makefile can be found
-    [here](src/figure-makefile/Makefile.png).
+-   A dependency diagram of the Makefile is attached here:
+
+![](src/figure-makefile/Makefile.png)<!-- -->
+
+You can also find the link [here](src/figure-makefile/Makefile.png).
 
 ### Mac M1 specific considerations
 
