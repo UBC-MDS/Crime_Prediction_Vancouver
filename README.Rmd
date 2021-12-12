@@ -136,7 +136,12 @@ In case of replicating the analysis without using `conda`, the following are the
 
 ### Dependecy Diagram of Makefile
 
--   A dependency diagram of the Makefile can be found [here](src/figure-makefile/Makefile.png).
+-   A dependency diagram of the Makefile is attached here:
+
+![](src/figure-makefile/Makefile.png)<!-- -->
+
+
+You can also find the link [here](src/figure-makefile/Makefile.png).
 
 ### Mac M1 specific considerations
 
